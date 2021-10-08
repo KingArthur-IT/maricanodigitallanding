@@ -1,8 +1,8 @@
 <template>
-    <div class="discuss">
-        <div class="container discuss__wrapper">
+    <section class="discuss">
+        <div class="container padding discuss__wrapper">
             <div class="title-wrapper">
-                <h2 class="title">Discuss <br> the project</h2>
+                <h2 class="title discuss__title">Discuss <br> the project</h2>
                 <div class="subtitle">
                     <img src="@/assets/design items/arrow-right-bottom.svg" alt="arrow">
                     <h3>Successful projects start by filling out this form</h3>
@@ -14,7 +14,7 @@
                 <input type="button" value="Send" class="btn btn-input">
             </form>
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>
@@ -22,7 +22,6 @@
     background: var(--bg-lighter);
 }
 .discuss__wrapper{
-    padding: 100px 0px;
 }
 .title-wrapper{
     display: flex;
@@ -30,12 +29,7 @@
     align-items: flex-end;
     margin-bottom: 10px;
 }
-.title{
-    font-size: 80px;
-    line-height: 85px;
-    letter-spacing: 0.04em;
-    color: #fff;
-    font-weight: 400;
+.discuss__title{
     margin-right: 58px;
 }
 .subtitle{

@@ -7,6 +7,10 @@
     <Development />
     <Discuss />
     <WhatWeDo />
+    <Portfolio />
+    <Clients />
+    <Discuss />
+    <Footer />
   </div>
 </template>
 
@@ -16,11 +20,15 @@ import Experience from '@/components/Experience.vue'
 import Development from '@/components/Development.vue'
 import Discuss from '@/components/Discuss.vue'
 import WhatWeDo from '@/components/WhatWeDo.vue'
+import Portfolio from '@/components/Portfolio.vue'
+import Clients from '@/components/Clients.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    Header, Experience, Development, Discuss, WhatWeDo
+    Header, Experience, Development, Discuss, WhatWeDo, Portfolio,
+    Clients, Footer
   },
   data () {
       return {
@@ -154,5 +162,15 @@ button{
   border: none;
   outline: none;
   cursor: pointer;
+}
+.title { 
+    font-size: 80px;
+    line-height: 85px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.04em;
+}
+.padding{
+  padding: 100px 0;
 }
 </style>

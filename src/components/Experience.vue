@@ -1,8 +1,8 @@
 <template>
-    <div class="experience">
+    <section class="experience">
         <div class="container">
             <div class="title__wrapper">
-                <h2 class="title">Our diverse and voluminous experience</h2>
+                <h2 class="experience__title">Our diverse and voluminous experience</h2>
                 <img src="@/assets/design items/arrow-left-bottom.png" alt="arrow" class="arrow">
             </div>
             <div class="experience__block">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>
@@ -38,7 +38,7 @@
     display: block;
     margin-bottom: 60px;
 }
-.title{
+.experience__title{
     font-size: 60px;
     line-height: 70px;
     letter-spacing: 0.04em;

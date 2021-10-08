@@ -1,11 +1,12 @@
 <template>
-    <div class="development">
+    <section class="development padding">
         <div class="container">
             <div class="grid-wrapper">
-                <div class="title">Directions <br> for development</div>
+                <div class="title development__title">Directions <br> for development</div>
                 <div class="box pwa-apps">
                     <div class="item-title">
-                        PWA-apps
+                        <img src="@/assets/dev icons/pwa-apps.png" alt="pwa" class="item-img">
+                        <span>PWA-apps</span>
                     </div>
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime.
@@ -14,7 +15,8 @@
                 </div>
                 <div class="box web-dev">
                     <div class="item-title">
-                        Web-dev
+                        <img src="@/assets/dev icons/web-dev.png" alt="pwa" class="item-img">
+                        <span>Web-dev</span>
                     </div>
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
@@ -23,7 +25,8 @@
                 </div>
                 <div class="box site-design">
                     <div class="item-title">
-                        Site design
+                        <img src="@/assets/dev icons/site-design.png" alt="pwa" class="item-img">
+                        <span>Site design</span>                        
                     </div>
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
@@ -33,7 +36,8 @@
                 <img src="@/assets/numbers.png" alt="numbers" class="numbers-img">
                 <div class="box turnkey-site">
                     <div class="item-title">
-                        Turnkey site
+                        <img src="@/assets/dev icons/turnkey.png" alt="pwa" class="item-img">
+                        <span>Turnkey site</span>                        
                     </div>
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
@@ -42,7 +46,8 @@
                 </div>
                 <div class="box landing">
                     <div class="item-title">
-                        Landing page
+                        <img src="@/assets/dev icons/landing.png" alt="pwa" class="item-img">
+                        <span>Landing page</span>                        
                     </div>
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
@@ -52,7 +57,8 @@
                 <img src="@/assets/landing.png" alt="landing" class="landing-img">
                 <div class="box busines-site">
                     <div class="item-title">
-                        Bisines site
+                        <img src="@/assets/dev icons/busines.png" alt="pwa" class="item-img">
+                        <span>Bisines site</span>                        
                     </div>
                     <p class="item-text">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum ipsa quam molestias? Nostrum velit ab ipsam labore sint deleniti minus perferendis at corporis, voluptate adipisci praesentium veniam pariatur ex unde!
@@ -61,7 +67,8 @@
                 </div>
                 <div class="box design">
                     <div class="item-title">
-                        Design
+                        <img src="@/assets/dev icons/design.png" alt="pwa" class="item-img">
+                        <span>Design</span>                        
                     </div>
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
@@ -70,7 +77,8 @@
                 </div>
                 <div class="box logo-design">
                     <div class="item-title">
-                        Logo design
+                        <img src="@/assets/dev icons/logo-design.png" alt="pwa" class="item-img">
+                        <span>Logo design</span>                        
                     </div>
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
@@ -81,13 +89,12 @@
                 <img src="@/assets/screen.png" alt="screen" class="screen-img">
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>
 .development{
-    background: var(--bg-darker);
-    padding: 100px 0;
+    background: var(--bg-darker);    
 }
 .grid-wrapper {
     display: grid;
@@ -103,13 +110,10 @@
     color: #646464;
     position: relative;
 }
-.title { 
+.development__title { 
     grid-area: 1 / 1 / 3 / 4; 
-    font-size: 80px;
-    line-height: 85px;
     display: flex;
     align-items: center;
-    font-weight: 400;
 }
 .pwa-apps { 
     grid-area: 1 / 5 / 2 / 6; 
@@ -160,6 +164,13 @@
     margin-bottom: 10px;
     font-size: 26px;
     line-height: 32px;
+    display: flex;
+    align-items: center;
+}
+.item-img{
+    width: 21px;
+    height: 21px;
+    margin-right: 10px;
 }
 .item-text{
     font-size: 16px;

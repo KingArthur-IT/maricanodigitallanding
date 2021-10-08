@@ -1,5 +1,5 @@
 <template>
-    <div class="do">
+    <section class="do">
         <div class="container">
             <img src="@/assets/solving.png" alt="Solving" class="bg-image">
             <div class="do-wrapper">
@@ -9,7 +9,7 @@
                 <img src="@/assets/img_circle.png" alt="img" class="image">
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>
@@ -18,7 +18,7 @@
     height: 344px;
 }
 .do-wrapper{
-    min-height: 344px;
+    min-height: 350px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +38,7 @@
     font-weight: 600;
 }
 .image{
-    width: 450px;
-    height: 450px;
+    width: 350px;
+    height: 360px;
 }
 </style>
