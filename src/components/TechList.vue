@@ -4,7 +4,7 @@
                 <h3 class="software__title">
                     List of Software Technologies we use
                 </h3>
-                <img src="@/assets/design items/arrow-left-bottom.png" alt="arrow">
+                <img src="@/assets/design items/arrow-left-bottom.svg" alt="arrow">
             </div>
             <div class="list">
                 <div class="list__item">
@@ -49,7 +49,7 @@
 
 <style scoped>
 .software{
-
+    z-index: 2;
 }
 .software__title-wrapper{
     display: flex;

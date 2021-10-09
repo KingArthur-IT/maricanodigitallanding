@@ -2,7 +2,7 @@
     <div class="container padding reviews">
         <div class="title__wrapper">
             <h2 class="title reviews__title">Recommendations <br> of our clients</h2>
-            <img src="@/assets/design items/arrow-left-bottom.png" alt="arrow" class="arrow">
+            <img src="@/assets/design items/arrow-left-bottom.svg" alt="arrow" class="arrow">
         </div>
         <div class="reviews-slider">
             <div class="slider-item">
@@ -17,7 +17,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam. Dolorem consectetur repellat ipsum? Dicta, temporibus.
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam.
                 </p>
-                <div class="more">Read <br> more</div>
+                <div class="btn more">Read <br> more</div>
             </div>
             <div class="slider-item">
                 <div class="slider-item__title">
@@ -31,7 +31,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam. Dolorem consectetur repellat ipsum? Dicta, temporibus.
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam.
                 </p>
-                <div class="more">Read <br> more</div>
+                <div class="btn more">Read <br> more</div>
             </div>
             <div class="slider-item">
                 <div class="slider-item__title">
@@ -45,7 +45,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam. Dolorem consectetur repellat ipsum? Dicta, temporibus.
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam.
                 </p>
-                <div class="more">Read <br> more</div>
+                <div class="btn more">Read <br> more</div>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
 
 <style scoped>
 .reviews{
-
+    z-index: 2;
 }
 .title__wrapper{
     position: relative;
@@ -91,6 +91,7 @@
     font-size: 26px;
     line-height: 35px;
     letter-spacing: 0.04em;
+    font-weight: 500;
 }
 .date-wrapper{
     display: flex;
@@ -107,6 +108,7 @@
     color: #fff;
     font-size: 14px;
     line-height: 35px;
+    font-weight: 300;
 }
 .slider-item__text{
     font-size: 15px;
@@ -121,17 +123,12 @@
     right: 20px;
     width: 68px;
     height: 68px;
-    background: var(--primary-color);
     border-radius: 50%;
-    color: #fff;
     font-size: 14px;
     line-height: 16px;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-weight: 500;
-    /*transform: translateY(30%);*/
 }
 </style>

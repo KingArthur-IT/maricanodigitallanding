@@ -35,7 +35,7 @@
     font-size: 55px;
     line-height: 70px;
     letter-spacing: 0.04em;
-    font-weight: 600;
+    font-weight: 900;
 }
 .image{
     width: 350px;

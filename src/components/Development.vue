@@ -11,7 +11,7 @@
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime.
                     </p>
-                    <div class="more-btn">More</div>
+                    <div class="btn more-btn">More</div>
                 </div>
                 <div class="box web-dev">
                     <div class="item-title">
@@ -21,7 +21,7 @@
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
                     </p>
-                    <div class="more-btn">More</div>
+                    <div class="btn more-btn">More</div>
                 </div>
                 <div class="box site-design">
                     <div class="item-title">
@@ -31,7 +31,7 @@
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
                     </p>
-                    <div class="more-btn">More</div>
+                    <div class="btn more-btn">More</div>
                 </div>
                 <img src="@/assets/numbers.png" alt="numbers" class="numbers-img">
                 <div class="box turnkey-site">
@@ -42,7 +42,7 @@
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
                     </p>
-                    <div class="more-btn">More</div>
+                    <div class="btn more-btn">More</div>
                 </div>
                 <div class="box landing">
                     <div class="item-title">
@@ -52,7 +52,7 @@
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
                     </p>
-                    <div class="more-btn">More</div>
+                    <div class="btn more-btn">More</div>
                 </div>
                 <img src="@/assets/landing.png" alt="landing" class="landing-img">
                 <div class="box busines-site">
@@ -63,7 +63,7 @@
                     <p class="item-text">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum ipsa quam molestias? Nostrum velit ab ipsam labore sint deleniti minus perferendis at corporis, voluptate adipisci praesentium veniam pariatur ex unde!
                     </p>
-                    <div class="more-btn">More</div>
+                    <div class="btn more-btn">More</div>
                 </div>
                 <div class="box design">
                     <div class="item-title">
@@ -73,7 +73,7 @@
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
                     </p>
-                    <div class="more-btn">More</div>
+                    <div class="btn more-btn">More</div>
                 </div>
                 <div class="box logo-design">
                     <div class="item-title">
@@ -83,7 +83,7 @@
                     <p class="item-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
                     </p>
-                    <div class="more-btn">More</div>
+                    <div class="btn more-btn">More</div>
                 </div>
                 <img src="@/assets/phone.png" alt="phone" class="phone-img">
                 <img src="@/assets/screen.png" alt="screen" class="screen-img">
@@ -105,6 +105,7 @@
     color: #fff;
 }
 .box{
+    font-family: 'Futura New Book';
     padding: 15px;
     border: 1px solid var(--border-color);
     color: #646464;
@@ -183,14 +184,11 @@
     right: 14px;
     width: 48px;
     height: 48px;
-    background: var(--primary-color);
     border-radius: 50%;
     font-size: 12px;
     line-height: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    color: #fff;
 }
 </style>

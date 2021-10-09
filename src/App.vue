@@ -4,13 +4,24 @@
       v-bind:navItems="navItems"
     />
     <Experience />
-    <Development />
+    <Development 
+      :id="navItems[0]"/>
     <Discuss />
     <WhatWeDo />
-    <Portfolio />
-    <Clients />
-    <Discuss />
-    <Footer />
+    <Portfolio 
+      :id="navItems[1]"/>
+    <Clients 
+      :id="navItems[2]"  
+    />
+    <Discuss 
+      :id="navItems[3]"
+    />
+    <Footer 
+      v-bind:navItems="navItems"
+      v-bind:tel="`+380 97 658 45 24`"
+      v-bind:adress="`Office adress`"
+      v-bind:email="`Email`"
+    />
   </div>
 </template>
 
@@ -28,7 +39,7 @@ export default {
   name: 'App',
   components: {
     Header, Experience, Development, Discuss, WhatWeDo, Portfolio,
-    Clients, Footer
+    Clients, Footer,
   },
   data () {
       return {
@@ -121,6 +132,7 @@ export default {
   --bg-lighter: #222222;
   --bg-darker: #1D1D1D;
   --primary-color: #52A921;
+  --primary-hover-color: #37800E;
   --border-color: #474747;
   --secondary-color: #FFC869;
   --text-color: #C7C7C7;
@@ -155,18 +167,24 @@ button{
 
 .btn{
   font-family: Futura New;
-  background: var(--primary-color);
-  padding: 10px;
-  border-radius: 150px;
+  font-weight: 500;
+  background: var(--primary-color);  
   color: #fff;
   border: none;
   outline: none;
   cursor: pointer;
 }
+.btn:hover{
+  background: var(--primary-hover-color);  
+}
+.btn-rect{
+  padding: 10px;
+  border-radius: 150px;
+}
 .title { 
     font-size: 80px;
     line-height: 85px;
-    font-weight: 400;
+    font-weight: 500;
     color: #fff;
     letter-spacing: 0.04em;
 }

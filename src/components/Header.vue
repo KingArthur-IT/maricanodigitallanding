@@ -74,24 +74,30 @@ export default {
   width: 582px;
 }
 .header__title{
-  font-weight: 600;
+  font-weight: 900;
   line-height: 80px;
   font-size: 80px;
   margin-bottom: 26px;
 }
 .header__subtitle{
+  font-family: 'Futura New Book';
   font-weight: normal;
   line-height: 27px;
   font-size: 16px;
   color: var(--text-color);
 }
 .more-details{
+  font-weight: 500;
   font-size: 20px;
   line-height: 24px;
   color: var(--primary-color);
   position: relative;
   align-self: flex-end;
   width: 120px;
+  cursor: pointer;
+}
+.more-details:hover{
+  color: var(--primary-hover-color);
 }
 .more-details__up-right{
   position: absolute;

@@ -7,31 +7,31 @@
                     <div>
                         <p class="slider__direction">Site design</p>
                         <p class="slider__prj-name">
-                            Business card website: Happytel
+                            Business card website: <span>Happytel</span>
                         </p>
                     </div>
                     <img src="@/assets/portfolio/1.jpg" alt="Happytel">
-                    <div class="more">See <br> project</div>
+                    <div class="btn more">See <br> project</div>
                 </div>
                 <div class="slider__item">
                     <div>
                         <p class="slider__direction">Site design</p>
                         <p class="slider__prj-name">
-                            Site design: Dr. Wise
+                            Site design: <span>Dr. Wise</span>
                         </p>
                     </div>
                     <img src="@/assets/portfolio/2.jpg" alt="Happytel">
-                    <div class="more">See <br> project</div>
+                    <div class="btn more">See <br> project</div>
                 </div>
                 <div class="slider__item">
                     <div>
                         <p class="slider__direction">Site design</p>
                         <p class="slider__prj-name">
-                            Site design: Wunity
+                            Site design: <span>Wunity</span>
                         </p>
                     </div>
                     <img src="@/assets/portfolio/3.jpg" alt="Happytel">
-                    <div class="more">See <br> project</div>
+                    <div class="btn more">See <br> project</div>
                 </div>
             </div>
         </div>
@@ -59,6 +59,7 @@
     position: relative;
 }
 .slider__direction{
+    font-weight: 500;
     font-size: 18px;
     line-height: 18px;
     letter-spacing: 0.04em;
@@ -66,11 +67,16 @@
     margin-bottom: 12px;
 }
 .slider__prj-name{
+    font-family: 'Futura New Book';
     font-size: 35px;
     line-height: 38px;
     letter-spacing: 0.04em;
     color: #fff;
     margin-bottom: 30px;
+}
+.slider__prj-name span{
+    font-family: 'Futura New';
+    font-weight: 400;
 }
 .slider__item img{
     
@@ -81,12 +87,9 @@
     right: 10px;
     width: 97px;
     height: 97px;
-    background: var(--primary-color);
     border-radius: 50%;
-    color: #fff;
     font-size: 18px;
     line-height: 20px;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;

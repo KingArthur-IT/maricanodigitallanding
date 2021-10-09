@@ -3,7 +3,7 @@
         <div class="container">
             <div class="title__wrapper">
                 <h2 class="experience__title">Our diverse and voluminous experience</h2>
-                <img src="@/assets/design items/arrow-left-bottom.png" alt="arrow" class="arrow">
+                <img src="@/assets/design items/arrow-left-bottom.svg" alt="arrow" class="arrow">
             </div>
             <div class="experience__block">
                 <div class="experience__item">
@@ -43,7 +43,7 @@
     line-height: 70px;
     letter-spacing: 0.04em;
     width: 80%;
-    font-weight: 400;
+    font-weight: 500;
 }
 .arrow{
     position: absolute;
@@ -65,12 +65,13 @@
     min-height: 260px;
 }
 .experience__item span{
-    font-weight: 600;
+    font-family: 'Futura New Demi';
     font-size: 80px;
     line-height: 70px;
     margin-bottom: 20px;
 }
 .experience__item p{
+    font-weight: 300;
     font-size: 18px;
     line-height: 20px;
     color: #D2D2D2;

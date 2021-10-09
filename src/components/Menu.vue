@@ -9,7 +9,7 @@
                         <a class="menu__link"  :href="`#${navItem}`" >{{navItem}}</a>
                     </li>
                     <li>
-                        <button class="btn menu__btn">
+                        <button class="btn btn-rect menu__btn">
                             Back call
                         </button>
                     </li>
@@ -47,7 +47,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     flex-basis: 60%;
-    font-weight: normal;
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
 }

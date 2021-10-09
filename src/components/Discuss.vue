@@ -11,7 +11,7 @@
             <form>
                 <input type="email" name="" id="" placeholder="E-mail*" class="email-input">
                 <input type="text" name="" id="" placeholder="Describe your idea" class="text-input">
-                <input type="button" value="Send" class="btn btn-input">
+                <input type="button" value="Send" class="btn btn-rect btn-input">
             </form>
         </div>
     </section>
@@ -45,6 +45,7 @@
     margin-bottom: 17px;
 }
 .subtitle h3{
+    font-family: 'Futura New Book';
     font-size: 24px;
     line-height: 28px;
     padding-bottom: 10px;
@@ -59,17 +60,22 @@ form{
     min-height: 250px;
 }
 .email-input, .text-input{
+    font-family: 'Futura New Book';
+    font-size: 16px;
+    line-height: 19px;
     padding: 13px;
     height: 36px;
     background: var(--bg-lighter);
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
-    color: #fff;
+    color: #999999;
+    letter-spacing: 0.04em;
 }
 .email-input{width: 550px;}
 .text-input{width: 100%;}
 .btn-input{
+    font-weight: 500;
     width: 150px;
     height: 55px;
     align-self: flex-end;
