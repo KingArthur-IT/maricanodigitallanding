@@ -1,5 +1,6 @@
 <template>
-    <div class="container software">
+    <div class="software">
+        <div class="container">
             <div class="software__title-wrapper">
                 <h3 class="software__title">
                     List of Software Technologies we use
@@ -45,11 +46,14 @@
                 </div>
             </div>
         </div>
+    </div>
 </template>
 
 <style scoped>
 .software{
     z-index: 2;
+    background: var(--bg-lighter);
+    position: relative;
 }
 .software__title-wrapper{
     display: flex;

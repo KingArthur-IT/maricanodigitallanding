@@ -2,41 +2,84 @@
     <section class="portfolio padding">
         <div class="container">
             <h2 class="title portfolio__title">Portfolio</h2>
-            <div class="slider">
-                <div class="slider__item">
-                    <div>
-                        <p class="slider__direction">Site design</p>
-                        <p class="slider__prj-name">
-                            Business card website: <span>Happytel</span>
-                        </p>
+                <VueSlickCarousel 
+                    ref="portfolioCarousel" :arrows="false" :dots="false" :slidesToShow="3"
+                    @afterChange="onChangeCarousel"
+                >
+                    <div class="slider__item"
+                        v-for="data in dataList" v-bind:key="data.id"
+                    >
+                        <div class="slider__content">
+                            <div>
+                                <p class="slider__direction">{{data.direction}}</p>
+                                <p class="slider__prj-name">
+                                     {{data.description}}<span>{{data.name}}</span>
+                                </p>
+                            </div>
+                            <img :src="data.image" :alt="data.imageAlt">
+                            <div class="btn more">See <br> project</div>
+                        </div>
                     </div>
-                    <img src="@/assets/portfolio/1.jpg" alt="Happytel">
-                    <div class="btn more">See <br> project</div>
+                </VueSlickCarousel> 
+                <div class="slider-controls-wrapper" >
+                <div class="dots-wrapper" v-for="data in dataList" v-bind:key="data.id">
+                    <div class="dots" 
+                    :style="{ backgroundImage: `url(${getModalRadio(data.id)})` }"
+                    @click="goToSlide(data.id)"
+                    ></div>
                 </div>
-                <div class="slider__item">
-                    <div>
-                        <p class="slider__direction">Site design</p>
-                        <p class="slider__prj-name">
-                            Site design: <span>Dr. Wise</span>
-                        </p>
-                    </div>
-                    <img src="@/assets/portfolio/2.jpg" alt="Happytel">
-                    <div class="btn more">See <br> project</div>
+                <img  src="@/assets/design items/slider-btn-right.svg" alt="Next" 
+                        @click="nextSlide" class="nextCarouselBtn"
+                >
                 </div>
-                <div class="slider__item">
-                    <div>
-                        <p class="slider__direction">Site design</p>
-                        <p class="slider__prj-name">
-                            Site design: <span>Wunity</span>
-                        </p>
-                    </div>
-                    <img src="@/assets/portfolio/3.jpg" alt="Happytel">
-                    <div class="btn more">See <br> project</div>
-                </div>
-            </div>
         </div>
     </section>
 </template>
+
+<script>
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
+//custom images for radio button
+import RadioDefauilt from "@/assets/design items/radio-btn.svg"
+import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
+
+export default {
+  name: 'Portfolio',
+  components: {
+    VueSlickCarousel
+  },
+  props: {
+      dataList: Array
+  },
+  data () {
+      return {
+        radioBtnIndexChecked : 1,  
+      }
+  },
+  methods: {
+    nextSlide(){
+      this.$refs.portfolioCarousel.next();
+      this.radioBtnIndexChecked ++;
+      if (this.radioBtnIndexChecked > this.dataList.length)
+        this.radioBtnIndexChecked = 1;
+    },
+    goToSlide(num){
+      this.$refs.portfolioCarousel.goTo(num);
+      this.radioBtnIndexChecked = num;
+    },
+    getModalRadio(el){
+      if (this.radioBtnIndexChecked == el )
+        return RadioCheched;
+      return RadioDefauilt;
+    },
+    onChangeCarousel(slideIndex){
+        this.radioBtnIndexChecked = slideIndex + 1;
+    }
+  }
+}
+</script>
 
 <style scoped>
 .portfolio{
@@ -50,12 +93,14 @@
     justify-content: space-between;
 }
 .slider__item{
-    background: #181818;
+    padding: 0 10px 40px;
+}
+.slider__content{
+    background: var(--bg-darker);
     padding: 21px;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: space-between;
-    flex-basis: 30%;
     position: relative;
 }
 .slider__direction{
@@ -73,6 +118,7 @@
     letter-spacing: 0.04em;
     color: #fff;
     margin-bottom: 30px;
+    min-height: 80px;
 }
 .slider__prj-name span{
     font-family: 'Futura New';
@@ -96,5 +142,25 @@
     text-align: center;
     transform: translateY(30%);
     font-weight: 500;
+}
+.slider-controls-wrapper{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 25px;
+}
+.dots-wrapper{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.dots{
+  margin-right: 15px;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+}
+.nextCarouselBtn{
+  height: 55px;
 }
 </style>

@@ -6,19 +6,33 @@
     <div class="header">
       <img src="@/assets/bg_text.png" alt="Maricano" class="header__bg-text">
       <div class="container">
-        <div class="header__hero">
-           <img src="@/assets/header-img.png" alt="" class="header__img">
-           <div class="header__info">
-             <h1 class="header__title">Implement your IT project</h1>
-             <p class="header__subtitle">
-               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione cumque dignissimos exercitationem ea quia maiores a doloribus, possimus sapiente, asperiores dicta voluptate iusto quibusdam vel. Aut nobis numquam qui veniam?
-             </p>
-             <div class="more-details">
-               More details
-               <img src="@/assets/design items/arrow-right-up.svg" alt="arrow" class="more-details__up-right">
-             </div>
-           </div>
-        </div>       
+        <VueSlickCarousel 
+            ref="carousel" :arrows="false" :dots="false" 
+            @afterChange="onChangeCarousel"
+        >
+          <div class="header__hero" v-for="data in sliderData" v-bind:key="data.id">
+              <img :src="data.image" :alt="data.imageAlt" class="header__img">
+              <div class="header__info">
+                    <h1 class="header__title">{{data.title}}</h1>
+                    <p class="header__subtitle">{{data.subtitle}}</p>
+                    <div class="more-details">
+                      More details
+                      <img src="@/assets/design items/arrow-right-up.svg" alt="arrow" class="more-details__up-right">
+                    </div>
+                  </div>
+            </div>
+        </VueSlickCarousel> 
+        <div class="slider-controls-wrapper" >
+          <div class="dots-wrapper" v-for="data in sliderData" v-bind:key="data.id">
+            <div class="dots" 
+              :style="{ backgroundImage: `url(${getModalRadio(data.id)})` }"
+              @click="goToSlide(data.id)"
+            ></div>
+          </div>
+          <img  src="@/assets/design items/slider-btn-right.svg" alt="Next" 
+                @click="nextSlide" class="nextCarouselBtn"
+          >
+        </div>    
       </div>
     </div>
   </header>
@@ -26,14 +40,47 @@
 
 <script>
 import Menu from '@/components/Menu.vue'
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
+//custom images for radio button
+import RadioDefauilt from "@/assets/design items/radio-btn.svg"
+import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
 
 export default {
   name: 'Header',
   components: {
-    Menu
+    Menu, VueSlickCarousel
   },
   props: {
-    navItems: Array
+    navItems: Array,
+    sliderData: Array
+  },
+  data () {
+      return {
+        radioBtnIndexChecked : 1,        
+      }
+  },
+  methods: {
+    nextSlide(){
+      this.$refs.carousel.next();
+      this.radioBtnIndexChecked ++;
+      if (this.radioBtnIndexChecked > this.sliderData.length)
+        this.radioBtnIndexChecked = 1;
+    },
+    goToSlide(num){
+      this.$refs.carousel.goTo(num);
+      this.radioBtnIndexChecked = num;
+    },
+    getModalRadio(el){
+      if (this.radioBtnIndexChecked == el )
+        return RadioCheched;
+      return RadioDefauilt;
+    },
+    onChangeCarousel(slideIndex){
+        this.radioBtnIndexChecked = slideIndex + 1;
+      }
   }
 }
 </script>
@@ -105,5 +152,27 @@ export default {
   height: 10px;
   top: 0;
   right: 0;
+}
+.slider-controls-wrapper{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+}
+.dots-wrapper{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.dots{
+  margin-right: 15px;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+}
+.nextCarouselBtn{
+  height: 55px;
 }
 </style>

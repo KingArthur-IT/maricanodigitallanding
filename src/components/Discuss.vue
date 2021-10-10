@@ -1,5 +1,5 @@
 <template>
-    <section class="discuss">
+    <section class="discuss" :class="{dark: isBgDark}">
         <div class="container padding discuss__wrapper">
             <div class="title-wrapper">
                 <h2 class="title discuss__title">Discuss <br> the project</h2>
@@ -17,10 +17,20 @@
     </section>
 </template>
 
+<script>
+export default {
+  name: 'Discuss',
+  props: {
+    isBgDark: Boolean
+  },
+}
+</script>
+
 <style scoped>
 .discuss{
     background: var(--bg-lighter);
 }
+.dark{background: var(--bg-darker);}
 .discuss__wrapper{
 }
 .title-wrapper{

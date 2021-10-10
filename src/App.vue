@@ -2,19 +2,32 @@
   <div id="app">
     <Header 
       v-bind:navItems="navItems"
+      v-bind:sliderData="headerSliderData"
     />
-    <Experience />
+    <Experience 
+      v-bind:firstItem="{ value: '20',  text: 'specialists in the team'}"
+      v-bind:secondItem="{value: '10',  text: 'years of experience'}"
+      v-bind:thirdItem="{ value: '95',  text: '% of satisfied customers'}"
+      v-bind:fourthItem="{ value: '75', text: '+ active projects'}"
+    />
     <Development 
-      :id="navItems[0]"/>
+      :id="navItems[0]"
+      v-bind:listData="devListData"
+      v-bind:imagesList="devImages"
+    />
     <Discuss />
     <WhatWeDo />
     <Portfolio 
-      :id="navItems[1]"/>
-    <Clients 
+      :id="navItems[1]"
+      v-bind:dataList="portfolioListData"
+    />
+    <TechList />
+    <Reviews 
       :id="navItems[2]"  
     />
     <Discuss 
       :id="navItems[3]"
+      v-bind:isBgDark="true"
     />
     <Footer 
       v-bind:navItems="navItems"
@@ -32,14 +45,36 @@ import Development from '@/components/Development.vue'
 import Discuss from '@/components/Discuss.vue'
 import WhatWeDo from '@/components/WhatWeDo.vue'
 import Portfolio from '@/components/Portfolio.vue'
-import Clients from '@/components/Clients.vue'
+import TechList from '@/components/TechList.vue'
+import Reviews from '@/components/Reviews.vue'
 import Footer from '@/components/Footer.vue'
+
+//images for header slider
+import HeaderSliderImg1 from "@/assets/header-img.png"
+//icons for blocks in development component
+import PWAAppsIcon      from "@/assets/dev icons/pwa-apps.png"
+import WebDevIcon       from "@/assets/dev icons/web-dev.png"
+import SiteDesignIcon   from "@/assets/dev icons/site-design.png"
+import TurnkeyIcon      from "@/assets/dev icons/turnkey.png"
+import LandingIcon      from "@/assets/dev icons/landing.png"
+import BusinesIcon      from "@/assets/dev icons/busines.png"
+import DesignIcon       from "@/assets/dev icons/design.png"
+import LogoDesignIcon   from "@/assets/dev icons/logo-design.png"
+//images for blocks in development component
+import LandingImage     from "@/assets/landing.png"
+import NumbersImage     from "@/assets/numbers.png"
+import PhoneImage       from "@/assets/phone.png"
+import ScreenImage      from "@/assets/screen.png"
+//images for portfolio cases
+import HappytelImage   from "@/assets/portfolio/1.jpg"
+import DrWiseImage   from "@/assets/portfolio/2.jpg"
+import WunityImage   from "@/assets/portfolio/3.jpg"
 
 export default {
   name: 'App',
   components: {
     Header, Experience, Development, Discuss, WhatWeDo, Portfolio,
-    Clients, Footer,
+    TechList, Reviews, Footer
   },
   data () {
       return {
@@ -50,6 +85,78 @@ export default {
             'Reviews',
             'Discuss the project',
           ],
+          //data for header slider
+          headerSliderData: [
+            {
+              id: 1,
+              title: 'Implement your IT project',
+              subtitle: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione cumque dignissimos exercitationem ea quia maiores a doloribus, possimus sapiente, asperiores dicta voluptate iusto quibusdam vel. Aut nobis numquam qui veniam?',
+              image: HeaderSliderImg1,
+              imageAlt: 'Header image'
+            },
+            {
+              id: 2,
+              title: 'Implement your IT project',
+              subtitle: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione cumque dignissimos exercitationem ea quia maiores a doloribus, possimus sapiente, asperiores dicta voluptate iusto quibusdam vel. Aut nobis numquam qui veniam?',
+              image: HeaderSliderImg1,
+              imageAlt: 'Header image'
+            },
+            {
+              id: 3,
+              title: 'Implement your IT project',
+              subtitle: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione cumque dignissimos exercitationem ea quia maiores a doloribus, possimus sapiente, asperiores dicta voluptate iusto quibusdam vel. Aut nobis numquam qui veniam?',
+              image: HeaderSliderImg1,
+              imageAlt: 'Header image'
+            }
+          ],
+          //data for development component
+          devListData: [
+            {   icon: PWAAppsIcon, iconAlt: 'pwa', title: 'PWA-apps', className: 'box pwa-apps',
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime.'
+            },
+            {   icon: WebDevIcon, iconAlt: 'webdev', title: 'Web-dev', className: 'box web-dev',
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam! '
+            },
+            {   icon: SiteDesignIcon, iconAlt: 'design', title: 'Site design', className: 'box site-design',
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!'
+            },
+            {   icon: TurnkeyIcon, iconAlt: 'turnkey', title: 'Turnkey site', className: 'box turnkey-site',
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!'
+            },
+            {   icon: LandingIcon, iconAlt: 'landing', title: 'Landing page', className: 'box landing',
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.'
+            },
+            {   icon: BusinesIcon, iconAlt: 'busines', title: 'Bisines site', className: 'box busines-site',
+                text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum ipsa quam molestias? Nostrum velit ab ipsam labore sint deleniti minus perferendis at corporis, voluptate adipisci praesentium veniam pariatur ex unde!'
+            },
+            {   icon: DesignIcon, iconAlt: 'design', title: 'Design', className: 'box design',
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.'
+            },
+            {   icon: LogoDesignIcon, iconAlt: 'design', title: 'Logo design', className: 'box logo-design',
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.'
+            },
+          ],
+          devImages: [
+              {image: LandingImage,   imageAlt: 'landing',    className: 'landing-img'},
+              {image: NumbersImage,   imageAlt: 'numbers',    className: 'numbers-img'},
+              {image: PhoneImage,     imageAlt: 'phone',      className: 'phone-img'},
+              {image: ScreenImage,    imageAlt: 'screen',     className: 'screen-img'},
+          ],
+          //portfolio data list
+          portfolioListData: [
+            {id: 1, direction: 'Site design', description: 'Business card website:',
+             name: 'Happytel', image: HappytelImage, imageAlt: 'Happytel'  },
+            {id: 2, direction: 'Site design', description: 'Site design:',
+             name: 'Dr. Wise', image: DrWiseImage, imageAlt: 'Dr.Wise'  },
+            {id: 3, direction: 'Site design', description: 'Site design:',
+             name: 'Wunity', image: WunityImage, imageAlt: 'Wunity'  },
+            {id: 4, direction: 'Site design', description: 'Business card website:',
+             name: 'Happytel', image: HappytelImage, imageAlt: 'Happytel'  },
+            {id: 5, direction: 'Site design', description: 'Site design:',
+             name: 'Dr. Wise', image: DrWiseImage, imageAlt: 'Dr.Wise'  },
+            {id: 6, direction: 'Site design', description: 'Site design:',
+             name: 'Wunity', image: WunityImage, imageAlt: 'Wunity'  },
+          ]
       }
     },
 }

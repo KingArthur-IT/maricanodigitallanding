@@ -7,25 +7,37 @@
             </div>
             <div class="experience__block">
                 <div class="experience__item">
-                    <span>20</span>
-                    <p>specialists in the team</p>
+                    <span>{{firstItem.value}}</span>
+                    <p>{{firstItem.text}}</p>
                 </div>
                 <div class="experience__item">
-                    <span>10</span>
-                    <p>years of experience</p>
+                    <span>{{secondItem.value}}</span>
+                    <p>{{secondItem.text}}</p>
                 </div>
                 <div class="experience__item">
-                    <span>95</span>
-                    <p>% of satisfied customers</p>
+                    <span>{{thirdItem.value}}</span>
+                    <p>{{thirdItem.text}}</p>
                 </div>
                 <div class="experience__item">
-                    <span>75</span>
-                    <p>+ active projects</p>
+                    <span>{{fourthItem.value}}</span>
+                    <p>{{fourthItem.text}}</p>
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<script>
+export default {
+  name: 'Experience',
+  props: {
+    firstItem: Object,
+    secondItem: Object,
+    thirdItem: Object,
+    fourthItem: Object,
+  },
+}
+</script>
 
 <style scoped>
 .experience{

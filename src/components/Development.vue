@@ -3,94 +3,34 @@
         <div class="container">
             <div class="grid-wrapper">
                 <div class="title development__title">Directions <br> for development</div>
-                <div class="box pwa-apps">
-                    <div class="item-title">
-                        <img src="@/assets/dev icons/pwa-apps.png" alt="pwa" class="item-img">
-                        <span>PWA-apps</span>
+                <div    v-for="data in listData" v-bind:key="data.title"
+                        :class="data.className">
+                    <div class="box__content">
+                        <div class="item-title">
+                            <img :src="data.icon" :alt="data.iconAlt" class="item-img">
+                            <span>{{data.title}}</span>
+                        </div>
+                        <p class="item-text">{{data.text}}</p>
                     </div>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime.
-                    </p>
                     <div class="btn more-btn">More</div>
                 </div>
-                <div class="box web-dev">
-                    <div class="item-title">
-                        <img src="@/assets/dev icons/web-dev.png" alt="pwa" class="item-img">
-                        <span>Web-dev</span>
-                    </div>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
-                    </p>
-                    <div class="btn more-btn">More</div>
-                </div>
-                <div class="box site-design">
-                    <div class="item-title">
-                        <img src="@/assets/dev icons/site-design.png" alt="pwa" class="item-img">
-                        <span>Site design</span>                        
-                    </div>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
-                    </p>
-                    <div class="btn more-btn">More</div>
-                </div>
-                <img src="@/assets/numbers.png" alt="numbers" class="numbers-img">
-                <div class="box turnkey-site">
-                    <div class="item-title">
-                        <img src="@/assets/dev icons/turnkey.png" alt="pwa" class="item-img">
-                        <span>Turnkey site</span>                        
-                    </div>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!
-                    </p>
-                    <div class="btn more-btn">More</div>
-                </div>
-                <div class="box landing">
-                    <div class="item-title">
-                        <img src="@/assets/dev icons/landing.png" alt="pwa" class="item-img">
-                        <span>Landing page</span>                        
-                    </div>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
-                    </p>
-                    <div class="btn more-btn">More</div>
-                </div>
-                <img src="@/assets/landing.png" alt="landing" class="landing-img">
-                <div class="box busines-site">
-                    <div class="item-title">
-                        <img src="@/assets/dev icons/busines.png" alt="pwa" class="item-img">
-                        <span>Bisines site</span>                        
-                    </div>
-                    <p class="item-text">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum ipsa quam molestias? Nostrum velit ab ipsam labore sint deleniti minus perferendis at corporis, voluptate adipisci praesentium veniam pariatur ex unde!
-                    </p>
-                    <div class="btn more-btn">More</div>
-                </div>
-                <div class="box design">
-                    <div class="item-title">
-                        <img src="@/assets/dev icons/design.png" alt="pwa" class="item-img">
-                        <span>Design</span>                        
-                    </div>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
-                    </p>
-                    <div class="btn more-btn">More</div>
-                </div>
-                <div class="box logo-design">
-                    <div class="item-title">
-                        <img src="@/assets/dev icons/logo-design.png" alt="pwa" class="item-img">
-                        <span>Logo design</span>                        
-                    </div>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.
-                    </p>
-                    <div class="btn more-btn">More</div>
-                </div>
-                <img src="@/assets/phone.png" alt="phone" class="phone-img">
-                <img src="@/assets/screen.png" alt="screen" class="screen-img">
+                <img 
+                    v-for="img in imagesList" v-bind:key="img.imageAlt"                
+                    :src="img.image" :alt="img.imageAlt"  :class="img.className">
             </div>
         </div>
     </section>
 </template>
+
+<script>
+export default {
+  name: 'Development',
+  props: {
+    listData: Array,
+    imagesList: Array,
+  },
+}
+</script>
 
 <style scoped>
 .development{
@@ -110,6 +50,12 @@
     border: 1px solid var(--border-color);
     color: #646464;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.box__content{
+
 }
 .development__title { 
     grid-area: 1 / 1 / 3 / 4; 
@@ -124,6 +70,7 @@
 }
 .site-design { 
     grid-area: 3 / 2 / 5 / 3; 
+    border-left: none;
 }
 .numbers-img { 
     grid-area: 1 / 4 / 2 / 5; 
@@ -135,6 +82,7 @@
 }
 .landing { 
     grid-area: 4 / 5 / 5 / 6; 
+    border-left: none;
 }
 .landing-img { 
     grid-area: 2 / 5 / 4 / 6; 
@@ -143,12 +91,18 @@
 }
 .busines-site { 
     grid-area: 5 / 2 / 7 / 4; 
+    border-left: none;
+    border-top: none;
 }
 .design { 
     grid-area: 5 / 4 / 7 / 5; 
+    border-left: none;
+    border-top: none;
 }
 .logo-design { 
     grid-area: 5 / 5 / 7 / 6; 
+    border-left: none;
+    border-top: none;
 }
 .phone-img { 
     grid-area: 3 / 3 / 5 / 4; 
@@ -179,9 +133,6 @@
     letter-spacing: 0.04em;
 }
 .more-btn{
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -190,5 +141,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-end;
 }
 </style>
