@@ -9,20 +9,79 @@
                 </div>
             </div>
             <form>
-                <input type="email" name="" id="" placeholder="E-mail*" class="email-input">
-                <input type="text" name="" id="" placeholder="Describe your idea" class="text-input">
-                <input type="button" value="Send" class="btn btn-rect btn-input">
+                <div class="input-wrapper">
+                    <label for="email" :class="{normalFont: emailInputFocused}">E-mail</label>
+                    <input type="email" name="email"  
+                        @focus="emailInputFocused = true" @blur="emailInputFocused = false"
+                        :placeholder="emailInputFocused ? '' : 'E-mail*'" 
+                        v-model="email"
+                        class="email-input" :class="{dark: isBgDark}"
+                    >
+                    <div class="validateMessage">{{ validation.firstError('email') }}</div>
+                </div>
+                <div class="input-wrapper">
+                    <label for="text" :class="{normalFont: textInputFocused}">Describe your idea</label>
+                    <input type="text" name="text" 
+                        @focus="textInputFocused = true" @blur="textInputFocused = false"
+                        :placeholder="textInputFocused ? '' : 'Describe your idea'" 
+                        v-model="text"
+                        class="text-input" :class="{dark: isBgDark}"
+                    >
+                    <div class="validateMessage">{{ validation.firstError('text') }}</div>
+                </div>
+                <input type="button" value="Send" class="btn btn-rect btn-input"
+                    @click="SendInfo" href="#"
+                >
             </form>
         </div>
     </section>
 </template>
 
 <script>
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
 export default {
   name: 'Discuss',
   props: {
     isBgDark: Boolean
   },
+  data() {
+      return{
+          //validator data
+          text: '',
+          email: '',
+          //is input focus
+          emailInputFocused: false,
+          textInputFocused: false,
+          //is form is success
+          isSuccess: false,
+      }
+  },
+  validators: {
+      email: function (value) {
+        return Validator.value(value).required().email();
+      },
+      text: function(value) {
+        return Validator.value(value).required().minLength(10);
+      }
+    },
+    methods: {
+        SendInfo(e){
+            //rezult of validation
+            let rezValue = this.$validate()
+                .then(function (success) {
+                if (success) {    
+                    e.preventDefault(); 
+                    return true;                
+                }
+                });
+            rezValue
+                .then(result => this.isSuccess = result);
+
+            //show success or error block 
+            console.log(this.isSuccess)
+        }
+    }
 }
 </script>
 
@@ -30,9 +89,7 @@ export default {
 .discuss{
     background: var(--bg-lighter);
 }
-.dark{background: var(--bg-darker);}
-.discuss__wrapper{
-}
+.dark{background: var(--bg-darker) !important;}
 .title-wrapper{
     display: flex;
     justify-content: flex-start;
@@ -69,6 +126,27 @@ form{
     align-items: flex-start;
     min-height: 250px;
 }
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+.input-wrapper label{
+    font-family: 'Futura New Book';
+    font-size: 0px;
+    letter-spacing: 0.04em;
+    color: #777777;
+    padding-left: 13px;
+    transition: all 0.2s ease-in;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+.normalFont{
+    font-size: 16px !important;
+    top: -20px !important;
+}
 .email-input, .text-input{
     font-family: 'Futura New Book';
     font-size: 16px;
@@ -79,7 +157,7 @@ form{
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
-    color: #999999;
+    color: #fff;
     letter-spacing: 0.04em;
 }
 .email-input{width: 550px;}
@@ -92,5 +170,22 @@ form{
     font-size: 15px;
     line-height: 24px;
     letter-spacing: 0.04em;
+}
+.validateMessage{
+    margin-top: 10px;
+    color: #ff00008f;
+    font-family: 'Futura New';
+    font-size: 16px;
+    font-weight: 300;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+{
+ -webkit-transition: background-color 1000s ease-in-out 0s;
+  -o-transition: background-color 1000s ease-in-out 0s;
+  transition: background-color 1000s ease-in-out 0s;
+  -webkit-text-fill-color: #999999;
+  color: #999999
 }
 </style>

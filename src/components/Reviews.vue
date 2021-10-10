@@ -96,8 +96,8 @@ export default {
         this.radioBtnIndexChecked = 1;
     },
     goToSlide(num){
-      this.$refs.reviewsCarousel.goTo(num);
-      this.radioBtnIndexChecked = num;
+      this.$refs.reviewsCarousel.goTo(num - 1);
+      this.radioBtnIndexChecked = num - 1;
     },
     getModalRadio(el){
       if (this.radioBtnIndexChecked == el )
@@ -217,8 +217,11 @@ export default {
   width: 18px;
   height: 18px;
   background-size: cover;
+  cursor: pointer;
 }
 .nextCarouselBtn{
   height: 55px;
+  width: 75px;
+  cursor: pointer;
 }
 </style>
