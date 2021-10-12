@@ -86,7 +86,8 @@ export default {
                 .then(result => this.isSuccess = result);
 
             //show success or error block 
-            console.log(this.isSuccess)
+            if (this.isSuccess)
+                this.$emit('showThankForm');
         },
         resizeEvent(){
             this.windowWidth = window.innerWidth;

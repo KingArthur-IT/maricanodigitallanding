@@ -2,8 +2,27 @@
   <header>
     <Menu 
       v-bind:navItems="navItems"
+      v-bind:menuIcon="menuIcon"
+      @showMenuEvent="showMenuMethod"
+      @showThankForm="showThankFormEvent"
     />
-    <div class="header">
+    <div class="mobileMenu" :class="{showMenu: isMenuVisible}">
+        <div class="container"> 
+              <ul class="mobileMenu__wrapper">
+                  <li class="mobileMenu__item"
+                      v-for="navItem in this.navItems" v-bind:key="navItem"
+                  >
+                      <a class="mobileMenu__link"  :href="`#${navItem}`" >{{navItem}}</a>
+                  </li>
+              </ul>
+              <button class="btn btn-rect menu__btn"
+                @click="showThankFormEvent"
+              >
+                  Back call
+              </button>
+        </div>
+    </div>
+    <div class="header" v-if="isHeaderVisible">
       <img src="@/assets/bg_text.png" alt="Maricano" class="header__bg-text">
       <div class="container">
         <VueSlickCarousel 
@@ -44,6 +63,10 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
+//menu icons
+import MenuIcon from '@/assets/design items/menu.svg'
+import CrossIcon from '@/assets/design items/cross.svg'
+
 //custom images for radio button
 import RadioDefauilt from "@/assets/design items/radio-btn.svg"
 import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
@@ -55,11 +78,14 @@ export default {
   },
   props: {
     navItems: Array,
-    sliderData: Array
+    sliderData: Array,
+    isHeaderVisible: Boolean
   },
   data () {
       return {
-        radioBtnIndexChecked : 1,        
+        radioBtnIndexChecked : 1,   
+        isMenuVisible: false,
+        menuIcon: MenuIcon     
       }
   },
   methods: {
@@ -80,7 +106,20 @@ export default {
     },
     onChangeCarousel(slideIndex){
         this.radioBtnIndexChecked = slideIndex + 1;
-      }
+    },
+    showMenuMethod(){
+      this.isMenuVisible = !this.isMenuVisible;
+      if (this.isMenuVisible)
+        this.menuIcon = CrossIcon;
+      else this.menuIcon = MenuIcon;
+    },
+    showThankFormEvent(){
+      this.$emit('showThankForm');
+      this.isMenuVisible = false;
+      if (this.isMenuVisible)
+        this.menuIcon = CrossIcon;
+      else this.menuIcon = MenuIcon;
+    }
   }
 }
 </script>
@@ -222,6 +261,61 @@ export default {
     line-height: 22px;
     font-size: 14px;
   }
+}
 
+.mobileMenu{
+  background: var(--bg-lighter);
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  transform: translateY(-120vh);
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+}
+.showMenu{
+  transform: translateY(0);
+  opacity: 1;
+}
+.mobileMenu__wrapper{
+  list-style: none;
+}
+.mobileMenu__link{
+    text-decoration: none;
+    color: #fff;
+    font-size: 40px;
+    line-height: 80px;
+    position: relative;
+}
+.mobileMenu__link:after{
+    content: '';
+    position: absolute;
+    height: 7px;
+    width: 7px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    top: 50%;
+    right: -30px;
+    opacity: 0;
+    transition: all 0.1s ease-in-out;
+    transform: scale(0);
+}
+.mobileMenu__link:hover{
+    color: var(--primary-color);
+}
+.mobileMenu__link:hover:after{
+    opacity: 1; transform: scale(1);
+}
+.menu__btn{
+    width: 350px;
+    height: 55px;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 24px;
+    margin-top: 30px;
+}
+@media screen and (max-width: 400px){
+  .menu__btn{ width: 100%; }
+  .mobileMenu__link{font-size: 38px; }
 }
 </style>

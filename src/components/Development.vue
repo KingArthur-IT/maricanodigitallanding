@@ -3,7 +3,7 @@
         <div class="container">
             <div class="grid-wrapper" v-if="windowWidth > showMobileMenuBrakepoint">
                 <div class="title development__title">Directions <br> for development</div>
-                <div    v-for="data in listData" v-bind:key="data.title"
+                <div    v-for="data in listData" v-bind:key="data.id"
                         :class="data.className">
                     <div class="box__content">
                         <div class="item-title">
@@ -18,17 +18,34 @@
                     v-for="img in imagesList" v-bind:key="img.imageAlt"                
                     :src="img.image" :alt="img.imageAlt"  :class="img.className">
             </div>
+            <div v-if="windowWidth <= showMobileMenuBrakepoint">
+                <div class="title development__title mobile-title">Directions <br> for development</div>
+                <DevMobileItem 
+                    v-for="data in listData" v-bind:key="data.id"
+                    v-bind:title="data.title"
+                    v-bind:icon="data.icon"
+                    v-bind:text="data.text"
+                    v-bind:id="data.id"
+                    v-bind:expandedItem="expandedItem"
+                    @setNewExpandItem="setNewExpandItemEvent"
+                />
+            </div>
         </div>
     </section>
 </template>
 
 <script>
+import DevMobileItem from '@/components/DevMobileItem.vue'
 export default {
     name: 'Development',
+    components: {
+        DevMobileItem
+    },
     data(){
             return{
                 windowWidth: window.innerWidth,
-                showMobileMenuBrakepoint: 950
+                showMobileMenuBrakepoint: 950,
+                expandedItem: -1
             }
         },
     props: {
@@ -39,6 +56,9 @@ export default {
         resizeEvent(){
             this.windowWidth = window.innerWidth;
         },
+        setNewExpandItemEvent(param){
+            this.expandedItem = param.id;
+        }
     },
     created() {
         window.addEventListener("resize", this.resizeEvent);
@@ -71,13 +91,13 @@ export default {
     flex-direction: column;
     justify-content: space-between;
 }
-.box__content{
-
-}
 .development__title { 
     grid-area: 1 / 1 / 3 / 4; 
     display: flex;
     align-items: center;
+}
+.mobile-title{
+    margin-bottom: 20px;
 }
 .pwa-apps { 
     grid-area: 1 / 5 / 2 / 6; 

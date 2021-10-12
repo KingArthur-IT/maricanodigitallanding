@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <footer :class="{fixed: footerFixed}">
         <div class="container">
             <div class="footer">
             <div class="footer__info">
@@ -69,6 +69,7 @@ export default {
     tel: String,
     adress: String,
     email: String,
+    footerFixed: Boolean
   },
   data () {
       return {
@@ -112,13 +113,17 @@ export default {
 <style scoped>
 footer{
     background: var(--bg-lighter);
-    min-height: 200px;
+}
+.fixed{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 .footer{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 25px 0 50px;
+    padding: 25px 0;
 }
 .footer__info{
     display: flex;
@@ -127,7 +132,7 @@ footer{
 }
 .footer__logo{
     width: 250px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 .footer__info p{
     color: #fff;
@@ -154,7 +159,7 @@ footer{
 .contacts__item{
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     cursor: pointer;
 }
 .contacts__item img{

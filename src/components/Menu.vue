@@ -10,15 +10,18 @@
                         <a class="menu__link"  :href="`#${navItem}`" >{{navItem}}</a>
                     </li>
                     <li>
-                        <button class="btn btn-rect menu__btn">
+                        <button class="btn btn-rect menu__btn"
+                            @click="$emit('showThankForm')"
+                        >
                             Back call
                         </button>
                     </li>
             </ul>
             <div class="mobile-menu-item" v-if="windowWidth <= showMobileMenuBrakepoint">
-                <img src="@/assets/design items/menu.svg" alt="menu">
+                <img :src="menuIcon" alt="menu"
+                    @click="$emit('showMenuEvent')" >
             </div>
-        </nav>
+          </nav>
       </div>
   </div>
 </template>
@@ -27,7 +30,8 @@
 export default {
     name: 'Menu',
     props: {
-        navItems: Array
+        navItems: Array,
+        menuIcon: String
     }, 
     data(){
         return{
@@ -52,6 +56,7 @@ export default {
 <style scoped>
 .menu-wrapper{
     background: var(--bg-lighter);
+    z-index: 20;
 }
 .menu{
     padding: 20px 0;

@@ -11,7 +11,8 @@
     "core-js": "^3.6.5",
     "simple-vue-validator": "^0.16.0",
     "vue": "^2.6.11",
-    "vue-slick-carousel": "^1.0.6"
+    "vue-slick-carousel": "^1.0.6",
+    "vue-transition-expand": "^0.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

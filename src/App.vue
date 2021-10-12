@@ -3,43 +3,55 @@
     <Header 
       v-bind:navItems="navItems"
       v-bind:sliderData="headerSliderData"
+      v-bind:isHeaderVisible="!isThankFormVisible"
+      @showThankForm="showThankFormEvent"
     />
-    <Experience 
-      v-bind:firstItem="{ value: '20',  text: 'specialists in the team'}"
-      v-bind:secondItem="{value: '10',  text: 'years of experience'}"
-      v-bind:thirdItem="{ value: '95',  text: '% of satisfied customers'}"
-      v-bind:fourthItem="{ value: '75', text: '+ active projects'}"
+    <ThankYouForm 
+      v-if="isThankFormVisible"
     />
-    <Development 
-      :id="navItems[0]"
-      v-bind:listData="devListData"
-      v-bind:imagesList="devImages"
-    />
-    <Discuss />
-    <WhatWeDo />
-    <Portfolio 
-      :id="navItems[1]"
-      v-bind:dataList="portfolioListData"
-    />
-    <TechList />
-    <Reviews 
-      :id="navItems[2]"  
-    />
-    <Discuss 
-      :id="navItems[3]"
-      v-bind:isBgDark="true"
-    />
+    <main v-if="!isThankFormVisible">      
+      <Experience 
+        v-bind:firstItem="{ value: '20',  text: 'specialists in the team'}"
+        v-bind:secondItem="{value: '10',  text: 'years of experience'}"
+        v-bind:thirdItem="{ value: '95',  text: '% of satisfied customers'}"
+        v-bind:fourthItem="{ value: '75', text: '+ active projects'}"
+      />
+      <Development 
+        :id="navItems[0]"
+        v-bind:listData="devListData"
+        v-bind:imagesList="devImages"
+      />
+      <Discuss 
+        @showThankForm="showThankFormEvent"
+      />
+      <WhatWeDo />
+      <Portfolio 
+        :id="navItems[1]"
+        v-bind:dataList="portfolioListData"
+      />
+      <TechList />
+      <Reviews 
+        :id="navItems[2]"  
+      />
+      <Discuss 
+        :id="navItems[3]"
+        v-bind:isBgDark="true"
+        @showThankForm="showThankFormEvent"
+      />
+    </main>
     <Footer 
       v-bind:navItems="navItems"
       v-bind:tel="`+380 97 658 45 24`"
       v-bind:adress="`Office adress`"
       v-bind:email="`Email`"
+      v-bind:footerFixed="isThankFormVisible"
     />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
+import ThankYouForm from '@/components/ThankYouForm.vue'
 import Experience from '@/components/Experience.vue'
 import Development from '@/components/Development.vue'
 import Discuss from '@/components/Discuss.vue'
@@ -74,10 +86,11 @@ export default {
   name: 'App',
   components: {
     Header, Experience, Development, Discuss, WhatWeDo, Portfolio,
-    TechList, Reviews, Footer
+    TechList, Reviews, Footer, ThankYouForm
   },
   data () {
       return {
+          isThankFormVisible: false,
           //items for navigation
           navItems: [
             'Services',
@@ -111,28 +124,28 @@ export default {
           ],
           //data for development component
           devListData: [
-            {   icon: PWAAppsIcon, iconAlt: 'pwa', title: 'PWA-apps', className: 'box pwa-apps',
+            {   id: 1, icon: PWAAppsIcon, iconAlt: 'pwa', title: 'PWA-apps', className: 'box pwa-apps',
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime.'
             },
-            {   icon: WebDevIcon, iconAlt: 'webdev', title: 'Web-dev', className: 'box web-dev',
+            {   id: 2, icon: WebDevIcon, iconAlt: 'webdev', title: 'Web-dev', className: 'box web-dev',
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam! '
             },
-            {   icon: SiteDesignIcon, iconAlt: 'design', title: 'Site design', className: 'box site-design',
+            {   id: 3, icon: SiteDesignIcon, iconAlt: 'design', title: 'Site design', className: 'box site-design',
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!'
             },
-            {   icon: TurnkeyIcon, iconAlt: 'turnkey', title: 'Turnkey site', className: 'box turnkey-site',
+            {   id: 4, icon: TurnkeyIcon, iconAlt: 'turnkey', title: 'Turnkey site', className: 'box turnkey-site',
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!'
             },
-            {   icon: LandingIcon, iconAlt: 'landing', title: 'Landing page', className: 'box landing',
+            {   id: 5, icon: LandingIcon, iconAlt: 'landing', title: 'Landing page', className: 'box landing',
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.'
             },
-            {   icon: BusinesIcon, iconAlt: 'busines', title: 'Bisines site', className: 'box busines-site',
+            {   id: 6, icon: BusinesIcon, iconAlt: 'busines', title: 'Bisines site', className: 'box busines-site',
                 text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum ipsa quam molestias? Nostrum velit ab ipsam labore sint deleniti minus perferendis at corporis, voluptate adipisci praesentium veniam pariatur ex unde!'
             },
-            {   icon: DesignIcon, iconAlt: 'design', title: 'Design', className: 'box design',
+            {   id: 7, icon: DesignIcon, iconAlt: 'design', title: 'Design', className: 'box design',
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.'
             },
-            {   icon: LogoDesignIcon, iconAlt: 'design', title: 'Logo design', className: 'box logo-design',
+            {   id: 8, icon: LogoDesignIcon, iconAlt: 'design', title: 'Logo design', className: 'box logo-design',
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque.'
             },
           ],
@@ -158,7 +171,12 @@ export default {
              name: 'Wunity', image: WunityImage, imageAlt: 'Wunity'  },
           ]
       }
-    },
+  },
+  methods: {
+    showThankFormEvent(){
+      this.isThankFormVisible = true;
+    }
+  }
 }
 </script>
 
@@ -248,7 +266,6 @@ export default {
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
