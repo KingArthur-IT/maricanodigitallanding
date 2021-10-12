@@ -90,7 +90,7 @@ export default {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam`
               },
           ],
-          slidesToShow: 3,
+          slidesToShow: window.innerWidth < 750 ? 1 : window.innerWidth < 1024 ? 2 : 3,
       }
   },
   methods: {
@@ -138,6 +138,7 @@ export default {
   bottom: 175px;
   left: 0;
   z-index: -1;
+  max-width: 100%;
 }
 .title__wrapper{
     position: relative;

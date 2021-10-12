@@ -66,4 +66,22 @@ export default {
     .text{ font-size: 42px; line-height: 55px;  }
     .image{ right: -40px; }
 }
+@media screen and (max-width: 650px){
+    .bg-image{width: 80%;}
+    .text{margin-top: -75px;}
+}
+@media screen and (max-width: 600px){
+    .image{ right: 0px; }
+    .image{ bottom: -120px;  }
+}
+@media screen and (max-width: 450px){
+    .text{font-size: 36px; }
+}
+@media screen and (max-width: 450px){
+    .text{font-size: 30px; line-height: 40px;}
+}
+@media screen and (max-width: 340px){
+    .text{margin-top: -80px;}
+    .image{ width: 220px; height: 220px; bottom: -110px;}
+}
 </style>

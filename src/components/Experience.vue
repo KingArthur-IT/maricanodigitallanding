@@ -8,20 +8,28 @@
             </div>
             <div class="experience__block">
                 <div class="experience__item">
-                    <span>{{firstItem.value}}</span>
-                    <p>{{firstItem.text}}</p>
+                    <div>
+                        <span class="experience__number">{{firstItem.value}}</span>
+                        <p class="experience__text">{{firstItem.text}}</p>
+                    </div>
                 </div>
                 <div class="experience__item">
-                    <span>{{secondItem.value}}</span>
-                    <p>{{secondItem.text}}</p>
+                    <div>
+                        <span class="experience__number">{{secondItem.value}}</span>
+                        <p class="experience__text">{{secondItem.text}}</p>
+                    </div>
                 </div>
                 <div class="experience__item">
-                    <span>{{thirdItem.value}}</span>
-                    <p>{{thirdItem.text}}</p>
+                    <div>
+                        <span class="experience__number">{{thirdItem.value}}</span>
+                        <p class="experience__text">{{thirdItem.text}}</p>
+                    </div>
                 </div>
                 <div class="experience__item">
-                    <span>{{fourthItem.value}}</span>
-                    <p>{{fourthItem.text}}</p>
+                    <div>
+                        <span class="experience__number">{{fourthItem.value}}</span>
+                        <p class="experience__text">{{fourthItem.text}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,13 +66,6 @@ export default {
     width: 80%;
     font-weight: 500;
 }
-.arrow{
-    position: absolute;
-    bottom: 10%;
-    left: 31%;
-    width: 13px;
-    height: 13px;
-}
 .experience__block{
     display: flex;
 }
@@ -77,22 +78,27 @@ export default {
     align-items: center;
     min-height: 260px;
 }
-.experience__item span{
+.experience__item div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.experience__number{
     font-family: 'Futura New Demi';
     font-size: 80px;
     line-height: 70px;
     margin-bottom: 20px;
 }
-.experience__item p{
+.experience__text{
     font-weight: 300;
     font-size: 18px;
     line-height: 20px;
     color: #D2D2D2;
+    text-align: center;
 }
 @media screen and (max-width: 1100px){
     .experience__item{ min-height: 225px; }
-    .experience__title{ width: 100%;}
-    .arrow{ left: 35%;}
 }
 @media screen and (max-width: 1000px){
   .experience__title{
@@ -103,11 +109,36 @@ export default {
 @media screen and (max-width: 900px){
     .experience__block{ flex-wrap: wrap; }
     .experience__item{ flex-basis: 50%;}
+    .title__wrapper{ margin-bottom: 40px;  }
 }
-@media screen and (max-width: 850px){
-    .arrow{ left: 40%;}
+@media screen and (max-width: 550px){
+  .experience__title{
+    font-size: 40px;
+    line-height: 50px;
+    }
 }
-@media screen and (max-width: 760px){
-    .arrow{ left: auto; right: 0%;}
+@media screen and (max-width: 500px){
+    .experience__item{min-height: 200px;}
+}
+@media screen and (max-width: 425px){
+    .experience__item{
+        justify-content: flex-start;
+        padding-top: 45px;
+    }
+    .experience__text{width: 90%;}
+}
+@media screen and (max-width: 400px){
+  .experience__title{
+    font-size: 30px;
+    line-height: 40px;
+    }
+}
+@media screen and (max-width: 350px){
+    .experience__item{ flex-basis: 100%;}
+    .experience__text{width: 100%;}
+    .experience__title{
+        font-size: 28px;
+        line-height: 30px;
+    }
 }
 </style>

@@ -338,4 +338,16 @@ button{
 @media screen and (max-width: 1000px){
   .title{font-size: 62px; line-height: 65px;}
 }
+@media screen and (max-width: 600px){
+  .container{padding: 0 20px}
+}
+@media screen and (max-width: 550px){
+  .title{font-size: 50px; line-height: 50px;}
+}
+@media screen and (max-width: 420px){
+  .title{font-size: 40px; line-height: 45px;}
+}
+@media screen and (max-width: 350px){
+  .title{font-size: 36px;}
+}
 </style>

@@ -130,7 +130,7 @@ export default {
 .subtitle h3{
     font-family: 'Futura New Book';
     font-size: 24px;
-    line-height: 28px;
+    line-height: 32px;
     padding-bottom: 10px;
     font-weight: 400;
     letter-spacing: 0.04em;
@@ -212,6 +212,7 @@ input:-webkit-autofill:focus
     }
     .discuss__title{
         margin-bottom: 15px;
+        margin-right: 0;
     }
 }
 @media screen and (max-width: 850px){

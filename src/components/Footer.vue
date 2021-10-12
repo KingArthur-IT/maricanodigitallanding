@@ -204,4 +204,8 @@ footer{
     opacity: 1;
     left: 50%;
 }
+@media screen and (max-width: 500px){
+  .footer{flex-direction: column;}
+  .contacts{margin-top: 30px;}
+}
 </style>

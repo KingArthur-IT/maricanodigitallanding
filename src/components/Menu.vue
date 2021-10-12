@@ -120,4 +120,7 @@ export default {
 @media screen and (max-width: 950px){
     .menu__btn{ width: 115px;}
 }
+@media screen and (max-width: 400px){
+    .logo{ width: 220px; }
+}
 </style>

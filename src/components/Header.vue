@@ -124,7 +124,6 @@ export default {
   font-weight: 900;
   margin-bottom: 26px;
 }
-.header__wrapper{}
 .header__subtitle{
   font-family: 'Futura New Book';
   font-weight: normal;
@@ -142,6 +141,7 @@ export default {
   align-self: flex-end;
   width: 120px;
   cursor: pointer;
+  z-index: 10;
 }
 .more-details:hover{
   color: var(--primary-hover-color);
@@ -193,16 +193,35 @@ export default {
   .header{  padding-top: 0px; min-height: 600px;}
   .header__hero{min-height: 600px; }
   .header__title{ margin-bottom: 15px; }
-  .slider-controls-wrapper{ bottom: 15%; }
+  .slider-controls-wrapper{ bottom: 10%; }
 }
 @media screen and (max-width: 900px){
   .header__info{width: 100%; position: relative;}
   .header__img{position: relative;}
   .slider-controls-wrapper{ right: 10%; }
+  .header__bg-text{top: 230px; }
 }
 @media screen and (max-width: 700px){
   .slider-controls-wrapper{ bottom: 0; left: 50%;}
-  .header__hero{min-height: 630px;}
-  .header{min-height: 660px;}
+  .header__img{width: 100vw;}
+  .header__hero{min-height: 775px;}
+  .header{min-height: 630px;}
+}
+@media screen and (max-width: 600px){
+  .header__bg-text{left: 20px; }
+  .header__img{width: 120vw;}
+  .header__hero{min-height: 660px;}
+  .slider-controls-wrapper{left: auto;}
+}
+@media screen and (max-width: 450px){
+  .header__hero{min-height: 605px;}
+}
+@media screen and (max-width: 375px){
+  .header__img{width: 115vw;}
+  .header__subtitle{
+    line-height: 22px;
+    font-size: 14px;
+  }
+
 }
 </style>

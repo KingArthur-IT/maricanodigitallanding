@@ -65,7 +65,7 @@ export default {
       return {
         //for sliser
         radioBtnIndexChecked : 1,  
-        slidesToShow: 3,
+        slidesToShow: window.innerWidth < 600 ? 2 : window.innerWidth < 775 ? 3 : 4,
         //for addaptive
         windowWidth: window.innerWidth,
         showSliderBrakepoint: 950,
@@ -102,6 +102,7 @@ export default {
         this.windowWidth = window.innerWidth;
         if (window.innerWidth <= 950) this.slidesToShow = 4;
         if (window.innerWidth < 775) this.slidesToShow = 3;
+        if (window.innerWidth < 600) this.slidesToShow = 2;
     },
   },
     created() {
@@ -193,5 +194,17 @@ export default {
     .list__item div{
         margin-right: 20px;
     }
+}
+@media screen and (max-width: 1300px){
+    .software__title{font-size: 50px; }
+}
+@media screen and (max-width: 750px){
+    .software__title{ font-size: 42px; line-height: 55px;  }
+}
+@media screen and (max-width: 550px){
+  .software__title{font-size: 38px; line-height: 45px;}
+}
+@media screen and (max-width: 400px){
+  .software__title{font-size: 26px; line-height: 35px;}
 }
 </style>

@@ -56,7 +56,7 @@ export default {
   data () {
       return {
         radioBtnIndexChecked : 1,  
-        slidesToShow: 3
+        slidesToShow: window.innerWidth < 775 ? 1 : window.innerWidth < 1100 ? 2 : 3
       }
   },
   methods: {
