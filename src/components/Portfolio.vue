@@ -3,7 +3,7 @@
         <div class="container">
             <h2 class="title portfolio__title">Portfolio</h2>
                 <VueSlickCarousel 
-                    ref="portfolioCarousel" :arrows="false" :dots="false" :slidesToShow="3"
+                    ref="portfolioCarousel" :arrows="false" :dots="false" :slidesToShow="slidesToShow"
                     @afterChange="onChangeCarousel"
                 >
                     <div class="slider__item"
@@ -56,6 +56,7 @@ export default {
   data () {
       return {
         radioBtnIndexChecked : 1,  
+        slidesToShow: 3
       }
   },
   methods: {
@@ -76,8 +77,18 @@ export default {
     },
     onChangeCarousel(slideIndex){
         this.radioBtnIndexChecked = slideIndex + 1;
-    }
-  }
+    },
+    resizeEvent(){
+        if (window.innerWidth < 1100) this.slidesToShow = 2;
+        if (window.innerWidth < 775) this.slidesToShow = 1;
+    },
+  },
+    created() {
+        window.addEventListener("resize", this.resizeEvent);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.resizeEvent);
+    },
 }
 </script>
 

@@ -11,15 +11,15 @@
             @afterChange="onChangeCarousel"
         >
           <div class="header__hero" v-for="data in sliderData" v-bind:key="data.id">
-              <img :src="data.image" :alt="data.imageAlt" class="header__img">
               <div class="header__info">
-                    <h1 class="header__title">{{data.title}}</h1>
+                    <h1 class="title header__title">{{data.title}}</h1>
                     <p class="header__subtitle">{{data.subtitle}}</p>
                     <div class="more-details">
                       More details
                       <img src="@/assets/design items/arrow-right-up.svg" alt="arrow" class="more-details__up-right">
                     </div>
-                  </div>
+              </div>
+              <img :src="data.image" :alt="data.imageAlt" class="header__img">
             </div>
         </VueSlickCarousel> 
         <div class="slider-controls-wrapper" >
@@ -122,16 +122,16 @@ export default {
 }
 .header__title{
   font-weight: 900;
-  line-height: 80px;
-  font-size: 80px;
   margin-bottom: 26px;
 }
+.header__wrapper{}
 .header__subtitle{
   font-family: 'Futura New Book';
   font-weight: normal;
   line-height: 27px;
   font-size: 16px;
   color: var(--text-color);
+  margin-bottom: 10px;
 }
 .more-details{
   font-weight: 500;
@@ -158,7 +158,7 @@ export default {
   justify-content: flex-start;
   align-items: center;
   position: absolute;
-  bottom: 15%;
+  bottom: 20%;
   right: 10%;
 }
 .dots-wrapper{
@@ -176,5 +176,33 @@ export default {
 .nextCarouselBtn{
   height: 55px;
   cursor: pointer;
+}
+@media screen and (max-width: 1300px){
+  .header__bg-text{width: 80%; }
+  .header__img{ top: 6%; }
+  .header__info{ width: 60%; }
+  .slider-controls-wrapper{ right: 20%; }
+  .header{min-height: 700px; }
+  .header__hero{min-height: 700px; }
+}
+@media screen and (max-width: 1100px){
+  .header__img{ top: auto; bottom: 0; }
+  .header__hero{min-height: 650px; }
+}
+@media screen and (max-width: 1000px){
+  .header{  padding-top: 0px; min-height: 600px;}
+  .header__hero{min-height: 600px; }
+  .header__title{ margin-bottom: 15px; }
+  .slider-controls-wrapper{ bottom: 15%; }
+}
+@media screen and (max-width: 900px){
+  .header__info{width: 100%; position: relative;}
+  .header__img{position: relative;}
+  .slider-controls-wrapper{ right: 10%; }
+}
+@media screen and (max-width: 700px){
+  .slider-controls-wrapper{ bottom: 0; left: 50%;}
+  .header__hero{min-height: 630px;}
+  .header{min-height: 660px;}
 }
 </style>

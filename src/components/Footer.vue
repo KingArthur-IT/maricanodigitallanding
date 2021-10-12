@@ -1,6 +1,7 @@
 <template>
     <footer>
-        <div class="container footer">
+        <div class="container">
+            <div class="footer">
             <div class="footer__info">
                 <img src="@/assets/Logo.svg" alt="Maricano Digital" class="footer__logo">
                 <p>We are in social networks</p>
@@ -22,7 +23,7 @@
                         alt="telegram" class="social">
                 </div>
             </div>
-            <nav class="footer__nav">
+            <nav class="footer__nav" v-if="windowWidth > mobileBrakepoint">
                 <ul>
                     <li class="nav-item"
                         v-for="navItem in this.navItems" v-bind:key="navItem"
@@ -45,6 +46,7 @@
                     <a :href="`mailto:${email}`" class="contact__info">{{email}}</a>
                 </div>
             </div>
+        </div>
         </div>
     </footer>
 </template>
@@ -76,6 +78,9 @@ export default {
           instaIcon: [Inst, InstHover],
           facebookIcon: [Facebook, FacebookHover],
           telegramIcon: [Telegram, TelegramHover],
+          //for addaptive
+          windowWidth: window.innerWidth,
+          mobileBrakepoint: 1000
       }
     },
   methods: {
@@ -91,7 +96,16 @@ export default {
       telegramHover() {
           this.isTelegramHover = !this.isTelegramHover;
       },
-  }
+      resizeEvent(){
+            this.windowWidth = window.innerWidth;
+        },        
+    },    
+    created() {
+        window.addEventListener("resize", this.resizeEvent);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.resizeEvent);
+    },
 }
 </script>
 

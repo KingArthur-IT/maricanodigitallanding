@@ -1,11 +1,14 @@
 <template>
     <section class="discuss" :class="{dark: isBgDark}">
-        <div class="container padding discuss__wrapper">
+        <div class="container">
+            <div class="padding discuss__wrapper">
             <div class="title-wrapper">
-                <h2 class="title discuss__title">Discuss <br> the project</h2>
+                <h2 class="title discuss__title">Discuss <br v-if="windowWidth > showMobileMenuBrakepoint"> the project</h2>
                 <div class="subtitle">
-                    <img src="@/assets/design items/arrow-right-bottom.svg" alt="arrow">
-                    <h3>Successful projects start by filling out this form</h3>
+                    <img src="@/assets/design items/arrow-right-bottom.svg" alt="arrow" v-if="windowWidth > showMobileMenuBrakepoint">
+                    <h3>Successful projects start by filling out this form
+                        <span class="icon-arrow-left-bottom" v-if="windowWidth <= showMobileMenuBrakepoint"></span>
+                    </h3>
                 </div>
             </div>
             <form>
@@ -34,6 +37,7 @@
                 >
             </form>
         </div>
+        </div>
     </section>
 </template>
 
@@ -55,6 +59,9 @@ export default {
           textInputFocused: false,
           //is form is success
           isSuccess: false,
+          //for addaptive
+          windowWidth: window.innerWidth,
+          showMobileMenuBrakepoint: 950
       }
   },
   validators: {
@@ -80,8 +87,17 @@ export default {
 
             //show success or error block 
             console.log(this.isSuccess)
-        }
-    }
+        },
+        resizeEvent(){
+            this.windowWidth = window.innerWidth;
+        },
+    },
+    created() {
+        window.addEventListener("resize", this.resizeEvent);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.resizeEvent);
+    },
 }
 </script>
 
@@ -187,5 +203,21 @@ input:-webkit-autofill:focus
   transition: background-color 1000s ease-in-out 0s;
   -webkit-text-fill-color: #999999;
   color: #999999
+}
+
+@media screen and (max-width: 950px){
+  .title-wrapper{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .discuss__title{
+        margin-bottom: 15px;
+    }
+}
+@media screen and (max-width: 850px){
+    .email-input{width: 100%;}
+    .btn-input{
+        align-self: center;
+    }
 }
 </style>

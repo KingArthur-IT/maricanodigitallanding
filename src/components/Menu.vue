@@ -1,8 +1,9 @@
 <template>
   <div class="menu-wrapper">
-        <nav class="container menu">
+      <div class="container">
+          <nav class="menu">
             <img src="@/assets/Logo.svg" alt="Maricano Digital" class="logo">
-            <ul class="menu__nav">
+            <ul class="menu__nav" v-if="windowWidth > showMobileMenuBrakepoint">
                     <li class="menu__item"
                         v-for="navItem in this.navItems" v-bind:key="navItem"
                     >
@@ -13,17 +14,38 @@
                             Back call
                         </button>
                     </li>
-                </ul>
+            </ul>
+            <div class="mobile-menu-item" v-if="windowWidth <= showMobileMenuBrakepoint">
+                <img src="@/assets/design items/menu.svg" alt="menu">
+            </div>
         </nav>
+      </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Menu',
-  props: {
-    navItems: Array
-  }
+    name: 'Menu',
+    props: {
+        navItems: Array
+    }, 
+    data(){
+        return{
+            windowWidth: window.innerWidth,
+            showMobileMenuBrakepoint: 950
+        }
+    },
+    methods: {
+        resizeEvent(){
+            this.windowWidth = window.innerWidth;
+        },
+    },
+    created() {
+        window.addEventListener("resize", this.resizeEvent);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.resizeEvent);
+    },
 }
 </script>
 
@@ -80,5 +102,22 @@ export default {
     font-weight: normal;
     font-size: 15px;
     line-height: 24px;
+}
+.mobile-menu-item{
+    background: var(--primary-color);
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.mobile-menu-item img{
+    width: 18px;
+    height: 18px;
+}
+@media screen and (max-width: 950px){
+    .menu__btn{ width: 115px;}
 }
 </style>

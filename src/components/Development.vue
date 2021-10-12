@@ -1,7 +1,7 @@
 <template>
     <section class="development padding">
         <div class="container">
-            <div class="grid-wrapper">
+            <div class="grid-wrapper" v-if="windowWidth > showMobileMenuBrakepoint">
                 <div class="title development__title">Directions <br> for development</div>
                 <div    v-for="data in listData" v-bind:key="data.title"
                         :class="data.className">
@@ -24,11 +24,28 @@
 
 <script>
 export default {
-  name: 'Development',
-  props: {
-    listData: Array,
-    imagesList: Array,
-  },
+    name: 'Development',
+    data(){
+            return{
+                windowWidth: window.innerWidth,
+                showMobileMenuBrakepoint: 950
+            }
+        },
+    props: {
+        listData: Array,
+        imagesList: Array,
+    },
+    methods: {
+        resizeEvent(){
+            this.windowWidth = window.innerWidth;
+        },
+    },
+    created() {
+        window.addEventListener("resize", this.resizeEvent);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.resizeEvent);
+    },
 }
 </script>
 
@@ -39,7 +56,7 @@ export default {
 .grid-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr) 0.5fr repeat(2, 1fr);
-    grid-template-rows: 0.7fr 0.3fr 0.2fr 1fr 0.5fr 0.3fr;
+    grid-template-rows: 0.7fr 0.3fr 0.2fr 1fr 0.5fr 0.5fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     color: #fff;

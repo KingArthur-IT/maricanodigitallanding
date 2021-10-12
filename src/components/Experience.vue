@@ -2,8 +2,9 @@
     <section class="experience">
         <div class="container">
             <div class="title__wrapper">
-                <h2 class="experience__title">Our diverse and voluminous experience</h2>
-                <img src="@/assets/design items/arrow-left-bottom.svg" alt="arrow" class="arrow">
+                <h2 class="experience__title">Our diverse and voluminous experience
+                    <span class="icon-arrow-left-bottom"></span>
+                </h2>
             </div>
             <div class="experience__block">
                 <div class="experience__item">
@@ -87,5 +88,26 @@ export default {
     font-size: 18px;
     line-height: 20px;
     color: #D2D2D2;
+}
+@media screen and (max-width: 1100px){
+    .experience__item{ min-height: 225px; }
+    .experience__title{ width: 100%;}
+    .arrow{ left: 35%;}
+}
+@media screen and (max-width: 1000px){
+  .experience__title{
+    font-size: 50px;
+    line-height: 60px;
+    }
+}
+@media screen and (max-width: 900px){
+    .experience__block{ flex-wrap: wrap; }
+    .experience__item{ flex-basis: 50%;}
+}
+@media screen and (max-width: 850px){
+    .arrow{ left: 40%;}
+}
+@media screen and (max-width: 760px){
+    .arrow{ left: auto; right: 0%;}
 }
 </style>

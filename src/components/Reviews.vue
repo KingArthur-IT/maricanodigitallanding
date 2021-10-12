@@ -1,42 +1,46 @@
 <template>
     <div class="reviews">
-        <div class="container padding">
-        <div class="title__wrapper">
-            <h2 class="title reviews__title">Recommendations <br> of our clients</h2>
-            <img src="@/assets/design items/arrow-left-bottom.svg" alt="arrow" class="arrow">
-        </div>
-         <VueSlickCarousel 
-            ref="reviewsCarousel" :arrows="false" :dots="false" :slidesToShow="3"
-             @afterChange="onChangeCarousel" 
-        >
-            <div class="slider-item"
-                v-for="data in reviewsList" v-bind:key="data.id"
-                :class="{lastItem: data.id == reviewsList.length}"
-            >
-                <div class="slider-item__title">
-                    <p class="slider-item__name">{{data.name}}</p>
-                    <div class="date-wrapper">
-                        <img src="@/assets/calendar.png">
-                        <p class="slider-item__date">{{data.date}}</p>
-                    </div>
-                </div>
-                <p class="slider-item__text">{{data.text}}</p>
-                <div class="btn more">Read <br> more</div>
-            </div>
-        </VueSlickCarousel> 
-         <div class="slider-controls-wrapper" >
-          <div class="dots-wrapper" v-for="data in reviewsList" v-bind:key="data.id">
-            <div class="dots" 
-              :style="{ backgroundImage: `url(${getModalRadio(data.id)})` }"
-              @click="goToSlide(data.id)"
-            ></div>
+        <div class="container">
+        <div class="padding">
+            <div class="title__wrapper">
+              <h2 class="title reviews__title">
+                Recommendations <br> of our clients
+                <span class="icon-arrow-left-bottom"></span>
+              </h2>
           </div>
-          <img  src="@/assets/design items/slider-btn-right.svg" alt="Next" 
-                @click="nextSlide" class="nextCarouselBtn"
+          <VueSlickCarousel 
+              ref="reviewsCarousel" :arrows="false" :dots="false" :slidesToShow="slidesToShow"
+              @afterChange="onChangeCarousel" 
           >
-        </div> 
+              <div class="slider-item"
+                  v-for="data in reviewsList" v-bind:key="data.id"
+                  :class="{lastItem: data.id == reviewsList.length}"
+              >
+                  <div class="slider-item__title">
+                      <p class="slider-item__name">{{data.name}}</p>
+                      <div class="date-wrapper">
+                          <img src="@/assets/calendar.png">
+                          <p class="slider-item__date">{{data.date}}</p>
+                      </div>
+                  </div>
+                  <p class="slider-item__text">{{data.text}}</p>
+                  <div class="btn more">Read <br> more</div>
+              </div>
+          </VueSlickCarousel> 
+          <div class="slider-controls-wrapper" >
+            <div class="dots-wrapper" v-for="data in reviewsList" v-bind:key="data.id">
+              <div class="dots" 
+                :style="{ backgroundImage: `url(${getModalRadio(data.id)})` }"
+                @click="goToSlide(data.id)"
+              ></div>
+            </div>
+            <img  src="@/assets/design items/slider-btn-right.svg" alt="Next" 
+                  @click="nextSlide" class="nextCarouselBtn"
+            >
+          </div> 
+          </div>
+          <img src="@/assets/clients.png" alt="" class="reviews__bg">
         </div>
-        <img src="@/assets/clients.png" alt="" class="reviews__bg">
     </div>
 </template>
 
@@ -85,7 +89,8 @@ export default {
                 text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam. Dolorem consectetur repellat ipsum? Dicta, temporibus.
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maxime ipsum soluta a officiis! At eos culpa perferendis aperiam accusamus atque adipisci pariatur ullam`
               },
-          ]
+          ],
+          slidesToShow: 3,
       }
   },
   methods: {
@@ -106,8 +111,19 @@ export default {
     },
     onChangeCarousel(slideIndex){
         this.radioBtnIndexChecked = slideIndex + 1;
-      }
-  }
+    },
+    resizeEvent(){
+      this.slidesToShow = 3;
+        if (window.innerWidth < 1024) this.slidesToShow = 2;
+        if (window.innerWidth < 750) this.slidesToShow = 1;
+    },
+  },
+    created() {
+        window.addEventListener("resize", this.resizeEvent);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.resizeEvent);
+    },
 }
 </script>
 
@@ -121,15 +137,12 @@ export default {
   position: absolute;
   bottom: 175px;
   left: 0;
-  z-index: 0;
+  z-index: -1;
 }
 .title__wrapper{
     position: relative;
     display: block;
     margin-bottom: 60px;
-}
-.reviews__title{
-    
 }
 .arrow{
     position: absolute;

@@ -234,6 +234,37 @@ export default {
     font-weight: bold;
     font-style: normal;
 }
+@font-face {
+  font-family: 'icomoon';
+  src:  url('~@/fonts/icomoon.eot?jwu3pc');
+  src:  url('~@/fonts/icomoon.eot?jwu3pc#iefix') format('embedded-opentype'),
+    url('~@/fonts/icomoon.ttf?jwu3pc') format('truetype'),
+    url('~@/fonts/icomoon.woff?jwu3pc') format('woff'),
+    url('~@/fonts/icomoon.svg?jwu3pc#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-arrow-left-bottom:before {
+  content: "\e900";
+  color: var(--primary-color);
+  font-size: 11px;
+  margin-left: 15px;
+}
 
 :root {
   --bg-lighter: #222222;
@@ -297,5 +328,14 @@ button{
 }
 .padding{
   padding: 100px 0;
+}
+@media screen and (max-width: 1300px){
+  .container{padding: 0 75px}
+}
+@media screen and (max-width: 1100px){
+  .title{font-size: 70px; line-height: 75px;}
+}
+@media screen and (max-width: 1000px){
+  .title{font-size: 62px; line-height: 65px;}
 }
 </style>
