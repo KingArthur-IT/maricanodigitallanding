@@ -202,8 +202,8 @@ input:-webkit-autofill:focus
  -webkit-transition: background-color 1000s ease-in-out 0s;
   -o-transition: background-color 1000s ease-in-out 0s;
   transition: background-color 1000s ease-in-out 0s;
-  -webkit-text-fill-color: #999999;
-  color: #999999
+  -webkit-text-fill-color: #fff;
+  color: #fff
 }
 
 @media screen and (max-width: 950px){

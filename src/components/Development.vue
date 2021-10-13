@@ -12,7 +12,7 @@
                         </div>
                         <p class="item-text">{{data.text}}</p>
                     </div>
-                    <div class="btn more-btn">More</div>
+                    <CircleMoreBtn />
                 </div>
                 <img 
                     v-for="img in imagesList" v-bind:key="img.imageAlt"                
@@ -36,10 +36,12 @@
 
 <script>
 import DevMobileItem from '@/components/DevMobileItem.vue'
+import CircleMoreBtn from '@/components/CircleMoreBtn.vue'
+
 export default {
     name: 'Development',
     components: {
-        DevMobileItem
+        DevMobileItem, CircleMoreBtn
     },
     data(){
             return{
@@ -168,16 +170,5 @@ export default {
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.04em;
-}
-.more-btn{
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    font-size: 12px;
-    line-height: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: flex-end;
 }
 </style>

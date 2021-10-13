@@ -13,7 +13,7 @@
                             <div>
                                 <p class="slider__direction">{{data.direction}}</p>
                                 <p class="slider__prj-name">
-                                     {{data.description}}<span>{{data.name}}</span>
+                                     {{data.description}}<span> {{data.name}}</span>
                                 </p>
                             </div>
                             <img :src="data.image" :alt="data.imageAlt">
@@ -80,6 +80,7 @@ export default {
         this.radioBtnIndexChecked = slideIndex + 1;
     },
     resizeEvent(){
+        this.slidesToShow = 3;
         if (window.innerWidth < 1100) this.slidesToShow = 2;
         if (window.innerWidth < 775) this.slidesToShow = 1;
     },

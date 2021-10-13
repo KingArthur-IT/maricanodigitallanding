@@ -158,9 +158,13 @@
     .thank-btn{
         width: 100px;
         height: 100px;
+        top: 31%;
     }
     .thank-btn a{
         font-size: 14px;
+    }
+    .bg-image{
+        bottom: 40vh;
     }
 }
 @media screen and (max-width: 350px){

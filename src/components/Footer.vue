@@ -161,6 +161,7 @@ footer{
     cursor: pointer;
 }
 .contacts{
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -183,6 +184,7 @@ footer{
     font-size: 16px;
 }
 .footer__nav{
+    margin-top: 10px;
     flex-basis: 40%;
 }
 .footer__nav ul{

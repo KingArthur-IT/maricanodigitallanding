@@ -11,20 +11,21 @@
         <transition-expand>         
             <div v-if="isExpand">
                 <div class="dev-item__text">{{text}}</div>      
-                 <div class="btn more-btn">More</div>       
+                <CircleMoreBtn />      
             </div>                    
         </transition-expand>
     </div>
 </template>
 
 <script>
+import CircleMoreBtn from '@/components/CircleMoreBtn.vue'
 import {TransitionExpand} from 'vue-transition-expand'
 import 'vue-transition-expand/dist/vue-transition-expand.css'
 
 export default {
     name: 'DevMobileItem',
     components: {
-        TransitionExpand
+        TransitionExpand, CircleMoreBtn
     },
     data () {
         return {
@@ -74,6 +75,7 @@ export default {
     justify-content: space-between;
     color: #fff;
     font-size: 22px;
+    cursor: pointer;
 }
 .dev-item__title{
     font-family: 'Futura New Book';
