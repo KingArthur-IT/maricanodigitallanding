@@ -26,7 +26,7 @@
                     <label for="text" :class="{normalFont: textInputFocused}">Describe your idea</label>
                     <input type="text" name="text" 
                         @focus="textInputFocused = true" @blur="textInputFocused = false"
-                        :placeholder="textInputFocused ? '' : 'Describe your idea'" 
+                        :placeholder="textInputFocused ? '' : 'Describe your idea*'" 
                         v-model="text"
                         class="text-input" :class="{dark: isBgDark}"
                     >

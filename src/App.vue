@@ -8,6 +8,7 @@
     />
     <ThankYouForm 
       v-if="isThankFormVisible"
+      @BackToMain="hideThankFormEvent"
     />
     <main v-if="!isThankFormVisible">      
       <Experience 
@@ -175,6 +176,9 @@ export default {
   methods: {
     showThankFormEvent(){
       this.isThankFormVisible = true;
+    },
+    hideThankFormEvent(){
+      this.isThankFormVisible = false;
     }
   }
 }

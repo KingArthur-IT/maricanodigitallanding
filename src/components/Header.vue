@@ -33,10 +33,7 @@
               <div class="header__info">
                     <h1 class="title header__title">{{data.title}}</h1>
                     <p class="header__subtitle">{{data.subtitle}}</p>
-                    <div class="more-details">
-                      More details
-                      <img src="@/assets/design items/arrow-right-up.svg" alt="arrow" class="more-details__up-right">
-                    </div>
+                    <MoreDetailsBtn />
               </div>
               <img :src="data.image" :alt="data.imageAlt" class="header__img">
             </div>
@@ -48,9 +45,9 @@
               @click="goToSlide(data.id)"
             ></div>
           </div>
-          <img  src="@/assets/design items/slider-btn-right.svg" alt="Next" 
-                @click="nextSlide" class="nextCarouselBtn"
-          >
+          <NextSlideBtn 
+            @nextSlideEvent="nextSlide"
+          />
         </div>    
       </div>
     </div>
@@ -59,6 +56,8 @@
 
 <script>
 import Menu from '@/components/Menu.vue'
+import MoreDetailsBtn from '@/components/MoreDetailsBtn.vue'
+import NextSlideBtn from '@/components/NextSlideBtn.vue'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -74,7 +73,7 @@ import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
 export default {
   name: 'Header',
   components: {
-    Menu, VueSlickCarousel
+    Menu, VueSlickCarousel, NextSlideBtn, MoreDetailsBtn
   },
   props: {
     navItems: Array,
@@ -85,7 +84,7 @@ export default {
       return {
         radioBtnIndexChecked : 1,   
         isMenuVisible: false,
-        menuIcon: MenuIcon     
+        menuIcon: MenuIcon,     
       }
   },
   methods: {
@@ -119,7 +118,7 @@ export default {
       if (this.isMenuVisible)
         this.menuIcon = CrossIcon;
       else this.menuIcon = MenuIcon;
-    }
+    },
   }
 }
 </script>
@@ -145,7 +144,7 @@ export default {
 .header__img{
   width: 100%;
   position: absolute;
-  left: -9%;
+  left: 0;
   top: 0;
 }
 .header__info{
@@ -171,27 +170,6 @@ export default {
   color: var(--text-color);
   margin-bottom: 10px;
 }
-.more-details{
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
-  color: var(--primary-color);
-  position: relative;
-  align-self: flex-end;
-  width: 120px;
-  cursor: pointer;
-  z-index: 10;
-}
-.more-details:hover{
-  color: var(--primary-hover-color);
-}
-.more-details__up-right{
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 0;
-  right: 0;
-}
 .slider-controls-wrapper{
   display: flex;
   justify-content: flex-start;
@@ -212,10 +190,7 @@ export default {
   background-size: cover;
   cursor: pointer;
 }
-.nextCarouselBtn{
-  height: 55px;
-  cursor: pointer;
-}
+
 @media screen and (max-width: 1300px){
   .header__bg-text{width: 80%; }
   .header__img{ top: 6%; }
@@ -266,7 +241,7 @@ export default {
 .mobileMenu{
   background: var(--bg-lighter);
   position: absolute;
-  z-index: 10;
+  z-index: 20;
   width: 100%;
   min-height: 100vh;
   transform: translateY(-120vh);

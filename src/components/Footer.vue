@@ -118,12 +118,20 @@ footer{
   position: absolute;
   width: 100%;
   bottom: 0;
+  z-index: 10;
+  border-top: 1px solid rgb(64, 64, 64);
 }
 .footer{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 25px 0;
+}
+.fixed .footer{
+    padding: 5px 0;
+}
+.fixed .footer .footer__logo{
+    margin-bottom: 5px;
 }
 .footer__info{
     display: flex;

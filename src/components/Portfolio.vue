@@ -28,15 +28,16 @@
                     @click="goToSlide(data.id)"
                     ></div>
                 </div>
-                <img  src="@/assets/design items/slider-btn-right.svg" alt="Next" 
-                        @click="nextSlide" class="nextCarouselBtn"
-                >
+                <NextSlideBtn 
+                    @nextSlideEvent="nextSlide"
+                />
                 </div>
         </div>
     </section>
 </template>
 
 <script>
+import NextSlideBtn from '@/components/NextSlideBtn.vue'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -48,7 +49,7 @@ import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
 export default {
   name: 'Portfolio',
   components: {
-    VueSlickCarousel
+    VueSlickCarousel, NextSlideBtn
   },
   props: {
       dataList: Array

@@ -14,7 +14,6 @@
           >
               <div class="slider-item"
                   v-for="data in reviewsList" v-bind:key="data.id"
-                  :class="{lastItem: data.id == reviewsList.length}"
               >
                   <div class="slider-item__title">
                       <p class="slider-item__name">{{data.name}}</p>
@@ -34,9 +33,9 @@
                 @click="goToSlide(data.id)"
               ></div>
             </div>
-            <img  src="@/assets/design items/slider-btn-right.svg" alt="Next" 
-                  @click="nextSlide" class="nextCarouselBtn"
-            >
+            <NextSlideBtn 
+              @nextSlideEvent="nextSlide"
+            />
           </div> 
           </div>
           <img src="@/assets/clients.png" alt="" class="reviews__bg">
@@ -45,6 +44,7 @@
 </template>
 
 <script>
+import NextSlideBtn from '@/components/NextSlideBtn.vue'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -56,7 +56,7 @@ import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
 export default {
   name: 'Reviews',
   components: {
-    VueSlickCarousel
+    VueSlickCarousel, NextSlideBtn
   },
   props: {
     
@@ -153,18 +153,13 @@ export default {
     height: 14px;
 }
 .slider-item{
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
+    border: 1px solid var(--border-color);
     flex-basis: 33.3%;
     padding: 20px 20px 20px 30px;
     min-height: 350px;
     position: relative;
     display: flex !important;
     flex-direction: column;
-}
-.lastItem{
-    border-right: 1px solid var(--border-color);
 }
 .slider-item__title{
     display: flex;

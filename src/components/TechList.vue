@@ -13,9 +13,8 @@
                     <p>{{data.text}}</p>
                 </div>
             </div>
-            <div class="slider-wrapper">
+            <div class="slider-wrapper" v-if="windowWidth <= showSliderBrakepoint">
                 <VueSlickCarousel 
-                    v-if="windowWidth <= showSliderBrakepoint"
                     ref="techListCarousel" :arrows="false" :dots="false" :slidesToShow="slidesToShow"
                     @afterChange="onChangeCarousel"
                 >
@@ -25,7 +24,7 @@
                     </div>
                 </VueSlickCarousel> 
             </div>
-            <div class="slider-controls-wrapper" >
+            <div class="slider-controls-wrapper" v-if="windowWidth <= showSliderBrakepoint">
                 <div class="dots-wrapper" v-for="data in dataList" v-bind:key="data.id">
                     <div class="dots" 
                     :style="{ backgroundImage: `url(${getModalRadio(data.id)})` }"
