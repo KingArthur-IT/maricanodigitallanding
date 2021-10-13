@@ -132,7 +132,7 @@ export default {
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam! '
             },
             {   id: 3, icon: SiteDesignIcon, iconAlt: 'design', title: 'Site design', className: 'box site-design',
-                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!'
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam! '
             },
             {   id: 4, icon: TurnkeyIcon, iconAlt: 'turnkey', title: 'Turnkey site', className: 'box turnkey-site',
                 text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam officia nulla dolores ut velit maxime cumque repudiandae ad possimus esse repellat, recusandae ipsum error facere ex fugit. Numquam, quisquam!'

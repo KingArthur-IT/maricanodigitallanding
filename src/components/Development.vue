@@ -239,6 +239,7 @@ export default {
     grid-area: 1 / 4 / 2 / 5; 
     width: 100%;
     height: 100%;
+    max-height: 230px;
 }
 .turnkey-site { 
     -ms-grid-row: 2; 
@@ -263,6 +264,7 @@ export default {
     grid-area: 2 / 5 / 4 / 6; 
     width: 100%;
     height: 100%;
+    max-height: 130px;
 }
 .busines-site { 
     -ms-grid-row: 5; 
@@ -299,6 +301,7 @@ export default {
     grid-area: 3 / 3 / 5 / 4; 
     width: 100%;
     height: 100%;
+    max-height: 330px;
 }
 .screen-img { 
     -ms-grid-row: 6; 
@@ -308,6 +311,7 @@ export default {
     grid-area: 6 / 1 / 7 / 2; 
     width: 100%;
     height: 100%;
+    max-height: 130px;
 }
 .item-title{
     color: #fff;
