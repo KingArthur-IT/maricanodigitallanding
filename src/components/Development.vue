@@ -76,12 +76,105 @@ export default {
     background: var(--bg-darker);    
 }
 .grid-wrapper {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr 0px 1fr 0px 0.5fr 0px 1fr 0px 1fr;
     grid-template-columns: repeat(2, 1fr) 0.5fr repeat(2, 1fr);
+    -ms-grid-rows: 0.7fr 0px 0.3fr 0px 0.2fr 0px 1fr 0px 0.5fr 0px 0.5fr;
     grid-template-rows: 0.7fr 0.3fr 0.2fr 1fr 0.5fr 0.5fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     color: #fff;
+}.grid-wrapper > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+}.grid-wrapper > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+}.grid-wrapper > *:nth-child(3) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+}.grid-wrapper > *:nth-child(4) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+}.grid-wrapper > *:nth-child(5) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 9;
+}.grid-wrapper > *:nth-child(6) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+}.grid-wrapper > *:nth-child(7) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+}.grid-wrapper > *:nth-child(8) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 5;
+}.grid-wrapper > *:nth-child(9) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 7;
+}.grid-wrapper > *:nth-child(10) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 9;
+}.grid-wrapper > *:nth-child(11) {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+}.grid-wrapper > *:nth-child(12) {
+    -ms-grid-row: 5;
+    -ms-grid-column: 3;
+}.grid-wrapper > *:nth-child(13) {
+    -ms-grid-row: 5;
+    -ms-grid-column: 5;
+}.grid-wrapper > *:nth-child(14) {
+    -ms-grid-row: 5;
+    -ms-grid-column: 7;
+}.grid-wrapper > *:nth-child(15) {
+    -ms-grid-row: 5;
+    -ms-grid-column: 9;
+}.grid-wrapper > *:nth-child(16) {
+    -ms-grid-row: 7;
+    -ms-grid-column: 1;
+}.grid-wrapper > *:nth-child(17) {
+    -ms-grid-row: 7;
+    -ms-grid-column: 3;
+}.grid-wrapper > *:nth-child(18) {
+    -ms-grid-row: 7;
+    -ms-grid-column: 5;
+}.grid-wrapper > *:nth-child(19) {
+    -ms-grid-row: 7;
+    -ms-grid-column: 7;
+}.grid-wrapper > *:nth-child(20) {
+    -ms-grid-row: 7;
+    -ms-grid-column: 9;
+}.grid-wrapper > *:nth-child(21) {
+    -ms-grid-row: 9;
+    -ms-grid-column: 1;
+}.grid-wrapper > *:nth-child(22) {
+    -ms-grid-row: 9;
+    -ms-grid-column: 3;
+}.grid-wrapper > *:nth-child(23) {
+    -ms-grid-row: 9;
+    -ms-grid-column: 5;
+}.grid-wrapper > *:nth-child(24) {
+    -ms-grid-row: 9;
+    -ms-grid-column: 7;
+}.grid-wrapper > *:nth-child(25) {
+    -ms-grid-row: 9;
+    -ms-grid-column: 9;
+}.grid-wrapper > *:nth-child(26) {
+    -ms-grid-row: 11;
+    -ms-grid-column: 1;
+}.grid-wrapper > *:nth-child(27) {
+    -ms-grid-row: 11;
+    -ms-grid-column: 3;
+}.grid-wrapper > *:nth-child(28) {
+    -ms-grid-row: 11;
+    -ms-grid-column: 5;
+}.grid-wrapper > *:nth-child(29) {
+    -ms-grid-row: 11;
+    -ms-grid-column: 7;
+}.grid-wrapper > *:nth-child(30) {
+    -ms-grid-row: 11;
+    -ms-grid-column: 9;
 }
 .box{
     font-family: 'Futura New Book';
@@ -89,66 +182,129 @@ export default {
     border: 1px solid var(--border-color);
     color: #646464;
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .development__title { 
+    -ms-grid-row: 1; 
+    -ms-grid-row-span: 2; 
+    -ms-grid-column: 1; 
+    -ms-grid-column-span: 3; 
     grid-area: 1 / 1 / 3 / 4; 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mobile-title{
     margin-bottom: 20px;
 }
 .pwa-apps { 
+    -ms-grid-row: 1; 
+    -ms-grid-row-span: 1; 
+    -ms-grid-column: 5; 
+    -ms-grid-column-span: 1; 
     grid-area: 1 / 5 / 2 / 6; 
 }
 .web-dev { 
+    -ms-grid-row: 3; 
+    -ms-grid-row-span: 3; 
+    -ms-grid-column: 1; 
+    -ms-grid-column-span: 1; 
     grid-area: 3 / 1 / 6 / 2; 
 }
 .site-design { 
+    -ms-grid-row: 3; 
+    -ms-grid-row-span: 2; 
+    -ms-grid-column: 2; 
+    -ms-grid-column-span: 1; 
     grid-area: 3 / 2 / 5 / 3; 
     border-left: none;
 }
 .numbers-img { 
+    -ms-grid-row: 1; 
+    -ms-grid-row-span: 1; 
+    -ms-grid-column: 4; 
+    -ms-grid-column-span: 1; 
     grid-area: 1 / 4 / 2 / 5; 
     width: 100%;
     height: 100%;
 }
 .turnkey-site { 
+    -ms-grid-row: 2; 
+    -ms-grid-row-span: 3; 
+    -ms-grid-column: 4; 
+    -ms-grid-column-span: 1; 
     grid-area: 2 / 4 / 5 / 5; 
 }
 .landing { 
+    -ms-grid-row: 4; 
+    -ms-grid-row-span: 1; 
+    -ms-grid-column: 5; 
+    -ms-grid-column-span: 1; 
     grid-area: 4 / 5 / 5 / 6; 
     border-left: none;
 }
 .landing-img { 
+    -ms-grid-row: 2; 
+    -ms-grid-row-span: 2; 
+    -ms-grid-column: 5; 
+    -ms-grid-column-span: 1; 
     grid-area: 2 / 5 / 4 / 6; 
     width: 100%;
     height: 100%;
 }
 .busines-site { 
+    -ms-grid-row: 5; 
+    -ms-grid-row-span: 2; 
+    -ms-grid-column: 2; 
+    -ms-grid-column-span: 2; 
     grid-area: 5 / 2 / 7 / 4; 
     border-left: none;
     border-top: none;
 }
 .design { 
+    -ms-grid-row: 5; 
+    -ms-grid-row-span: 2; 
+    -ms-grid-column: 4; 
+    -ms-grid-column-span: 1; 
     grid-area: 5 / 4 / 7 / 5; 
     border-left: none;
     border-top: none;
 }
 .logo-design { 
+    -ms-grid-row: 5; 
+    -ms-grid-row-span: 2; 
+    -ms-grid-column: 5; 
+    -ms-grid-column-span: 1; 
     grid-area: 5 / 5 / 7 / 6; 
     border-left: none;
     border-top: none;
 }
 .phone-img { 
+    -ms-grid-row: 3; 
+    -ms-grid-row-span: 2; 
+    -ms-grid-column: 3; 
+    -ms-grid-column-span: 1; 
     grid-area: 3 / 3 / 5 / 4; 
     width: 100%;
     height: 100%;
 }
 .screen-img { 
+    -ms-grid-row: 6; 
+    -ms-grid-row-span: 1; 
+    -ms-grid-column: 1; 
+    -ms-grid-column-span: 1; 
     grid-area: 6 / 1 / 7 / 2; 
     width: 100%;
     height: 100%;
@@ -158,8 +314,12 @@ export default {
     margin-bottom: 10px;
     font-size: 26px;
     line-height: 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .item-img{
     width: 21px;
