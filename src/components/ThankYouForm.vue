@@ -49,8 +49,8 @@
 }
 .bg-image{
     position: absolute;
-    bottom: 20vh;
-    left: 50vw;
+    bottom: 5vh;
+    left: 60vw;
     width: 70vh;
     z-index: 0;
 }
