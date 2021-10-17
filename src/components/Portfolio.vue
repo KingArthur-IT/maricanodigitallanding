@@ -10,7 +10,7 @@
                         v-for="data in dataList" v-bind:key="data.id"
                     >
                         <div class="slider__content">
-                            <div>
+                            <div class="slider__text-content">
                                 <p class="slider__direction">{{data.direction}}</p>
                                 <p class="slider__prj-name">
                                      {{data.description}}<span> {{data.name}}</span>
@@ -79,10 +79,22 @@ export default {
     onChangeCarousel(slideIndex){
         this.radioBtnIndexChecked = slideIndex + 1;
     },
+    setEqualHeightToSlider(){
+        let minHeight = 0;
+        let elements = document.getElementsByClassName('slider__text-content');
+        elements.forEach(el => {
+            minHeight = el.clientHeight > minHeight ? el.clientHeight : minHeight;
+        });
+        elements.forEach(el => {
+            el.style.minHeight = minHeight + 'px';
+        });
+    },
     resizeEvent(){
         this.slidesToShow = 3;
         if (window.innerWidth < 1100) this.slidesToShow = 2;
         if (window.innerWidth < 775) this.slidesToShow = 1;
+
+        this.setEqualHeightToSlider();        
     },
   },
     created() {
@@ -91,6 +103,9 @@ export default {
     destroyed() {
         window.removeEventListener("resize", this.resizeEvent);
     },
+    mounted(){
+        this.setEqualHeightToSlider(); 
+    }
 }
 </script>
 

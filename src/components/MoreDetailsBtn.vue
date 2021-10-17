@@ -4,30 +4,27 @@
         @mouseleave="btnHover"
     >
         More details
-        <img :src="arrowIcon[boolToInt(isArrowHover)]" 
-             alt="arrow" class="more-details__up-right"
-        >
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="more-details__up-right">
+          <path d="M2 1H10V9" :stroke="color" stroke-linecap="square"/>
+          <path d="M9 2L1 10" :stroke="color" stroke-linecap="square"/>
+        </svg>
     </div>
 </template>
 
 <script>
-import Arrow from "@/assets/design items/arrow-right-up.svg"
-import ArrowHover from "@/assets/design items/arrow-right-up_hover.svg"
 
 export default {
   name: 'MoreDetailsBtn',
   data () {
       return {
         isArrowHover: false,
-        arrowIcon: [Arrow, ArrowHover]     
+        color: '#52A921'
       }
   },
   methods: {
-    boolToInt(bool){
-        return bool ? 1 : 0;
-    },
     btnHover() {
         this.isArrowHover = !this.isArrowHover;
+        this.color = !this.isArrowHover ? '#52A921' : '#37800E'
     },
   }
 }
