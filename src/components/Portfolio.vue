@@ -152,9 +152,6 @@ export default {
     font-family: 'Futura New';
     font-weight: 400;
 }
-.slider__item img{
-    
-}
 .more{
     position: absolute;
     bottom: 0;
