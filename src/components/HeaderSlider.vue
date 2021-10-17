@@ -15,10 +15,13 @@
         </VueSlickCarousel> 
         <div class="slider-controls-wrapper" >
           <div class="dots-wrapper" v-for="data in sliderData" v-bind:key="data.id">
-            <div class="dots" 
-              :style="{ backgroundImage: `url(${getModalRadio(data.id)})` }"
-              @click="goToSlide(data.id)"
-            ></div>
+            <SliderDot 
+              v-bind:size="15"
+              v-bind:color="`#D5D5D5`"
+              v-bind:colorHover="`#52A921`"
+              v-bind:isChecked="radioBtnIndexChecked == data.id"
+              @clickEvent="goToSlide(data.id)"
+            />
           </div>
           <NextSlideBtn 
             @nextSlideEvent="nextSlide"
@@ -30,18 +33,15 @@
 <script>
 import MoreDetailsBtn from '@/components/MoreDetailsBtn.vue'
 import NextSlideBtn from '@/components/NextSlideBtn.vue'
+import SliderDot from '@/components/SliderDot.vue'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
-//custom images for radio button
-import RadioDefauilt from "@/assets/design items/radio-btn.svg"
-import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
-
 export default {
   name: 'HeaderSlider',
   components: {
-    VueSlickCarousel, NextSlideBtn, MoreDetailsBtn
+    VueSlickCarousel, NextSlideBtn, MoreDetailsBtn, SliderDot
   },
   props: {
     sliderData: Array
@@ -61,11 +61,6 @@ export default {
     goToSlide(num){
       this.$refs.carousel.goTo(num - 1);
       this.radioBtnIndexChecked = num - 1;
-    },
-    getModalRadio(el){
-      if (this.radioBtnIndexChecked == el )
-        return RadioCheched;
-      return RadioDefauilt;
     },
     onChangeCarousel(slideIndex){
         this.radioBtnIndexChecked = slideIndex + 1;

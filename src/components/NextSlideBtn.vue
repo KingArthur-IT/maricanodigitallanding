@@ -4,7 +4,7 @@
             :src="nextBtn[boolToInt(isNextSlideBtnHover)]" 
             alt="Next" 
             class="nextCarouselBtn"
-            @click="$emit('nextSlideEvent')"
+            @click="$emit('nextSlideEvent')" 
     >
 </template>
 

@@ -23,10 +23,13 @@
                 </VueSlickCarousel> 
                 <div class="slider-controls-wrapper" >
                 <div class="dots-wrapper" v-for="data in dataList" v-bind:key="data.id">
-                    <div class="dots" 
-                    :style="{ backgroundImage: `url(${getModalRadio(data.id)})` }"
-                    @click="goToSlide(data.id)"
-                    ></div>
+                    <SliderDot 
+                        v-bind:size="18"
+                        v-bind:color="`#D5D5D5`"
+                        v-bind:colorHover="`#52A921`"
+                        v-bind:isChecked="radioBtnIndexChecked == data.id"
+                        @clickEvent="goToSlide(data.id)"
+                    />
                 </div>
                 <NextSlideBtn 
                     @nextSlideEvent="nextSlide"
@@ -38,18 +41,15 @@
 
 <script>
 import NextSlideBtn from '@/components/NextSlideBtn.vue'
+import SliderDot from '@/components/SliderDot.vue'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
-//custom images for radio button
-import RadioDefauilt from "@/assets/design items/radio-btn.svg"
-import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
-
 export default {
   name: 'Portfolio',
   components: {
-    VueSlickCarousel, NextSlideBtn
+    VueSlickCarousel, NextSlideBtn, SliderDot
   },
   props: {
       dataList: Array
@@ -70,11 +70,6 @@ export default {
     goToSlide(num){
       this.$refs.portfolioCarousel.goTo(num - 1);
       this.radioBtnIndexChecked = num - 1;
-    },
-    getModalRadio(el){
-      if (this.radioBtnIndexChecked == el )
-        return RadioCheched;
-      return RadioDefauilt;
     },
     onChangeCarousel(slideIndex){
         this.radioBtnIndexChecked = slideIndex + 1;
@@ -178,13 +173,6 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
-.dots{
-  margin-right: 15px;
-  width: 18px;
-  height: 18px;
-  background-size: cover;
-  cursor: pointer;
 }
 .nextCarouselBtn{
   height: 55px;

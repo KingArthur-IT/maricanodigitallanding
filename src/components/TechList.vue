@@ -26,10 +26,13 @@
             </div>
             <div class="slider-controls-wrapper" v-if="windowWidth <= showSliderBrakepoint">
                 <div class="dots-wrapper" v-for="data in dataList" v-bind:key="data.id">
-                    <div class="dots" 
-                    :style="{ backgroundImage: `url(${getModalRadio(data.id)})` }"
-                    @click="goToSlide(data.id)"
-                    ></div>
+                    <SliderDot 
+                        v-bind:size="18"
+                        v-bind:color="`#D5D5D5`"
+                        v-bind:colorHover="`#52A921`"
+                        v-bind:isChecked="radioBtnIndexChecked == data.id"
+                        @clickEvent="goToSlide(data.id)"
+                    />
                 </div>
             </div>
         </div>
@@ -37,13 +40,10 @@
 </template>
 
 <script>
+import SliderDot from '@/components/SliderDot.vue'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
-
-//custom images for radio button
-import RadioDefauilt from "@/assets/design items/radio-btn.svg"
-import RadioCheched from "@/assets/design items/radio-btn-checked.svg"
 
 import PhpIcon from "@/assets/tech list/php.png"
 import MySqlIcon from "@/assets/tech list/mysql.png"
@@ -55,7 +55,7 @@ import AfterEffectsIcon from "@/assets/tech list/aftereffects.png"
 export default {
   name: 'TechList',
   components: {
-    VueSlickCarousel
+    VueSlickCarousel, SliderDot
   },
   props: {
       
@@ -88,11 +88,6 @@ export default {
     goToSlide(num){
       this.$refs.techListCarousel.goTo(num - 1);
       this.radioBtnIndexChecked = num - 1;
-    },
-    getModalRadio(el){
-      if (this.radioBtnIndexChecked == el )
-        return RadioCheched;
-      return RadioDefauilt;
     },
     onChangeCarousel(slideIndex){
         this.radioBtnIndexChecked = slideIndex + 1;
@@ -181,13 +176,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   margin-top: 25px;
-}
-.dots{
-  margin-right: 15px;
-  width: 18px;
-  height: 18px;
-  background-size: cover;
-  cursor: pointer;
 }
 @media screen and (max-width: 950px){
     .list__item div{
